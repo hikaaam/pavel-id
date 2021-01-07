@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text,TouchableOpacity } from 'react-native';
+
+//CustomComponents
+import CompenentHeader from '../../components/header';
+import Back from '../../components/backToDevelopment';
 
 class home extends Component {
   constructor(props) {
@@ -11,11 +15,11 @@ class home extends Component {
   render() {
     return (
       <View style={{
-          flex:1,
-          justifyContent:'center',
-          alignItems:'center'
+        
       }}>
-        <Text> home </Text>
+        <CompenentHeader />
+        <Text> halo </Text>
+      <Back />
       </View>
     );
   }

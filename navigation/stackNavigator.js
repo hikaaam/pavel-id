@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 
 //import screen
@@ -11,6 +11,11 @@ import ScreenFeed from '../screen/feed/feed';
 import ScreenDevelopment from '../screen/development/development';
 import ScreenLogin from '../screen/Login/Login';
 import ScreenRegister from '../screen/Login/Register';
+
+
+//Colors
+import Colors from '../colors/colors';
+import { RFPercentage } from 'react-native-responsive-fontsize';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +29,9 @@ class stackNavigator {
                 }} component={ScreenDevelopment} />
 
                 <Stack.Screen name="Home" options={{
+                    headerStyle: Style.HeaderBiruNavigation,
+                    headerTitleStyle: Style.HeaderBiruTitleNavigation,
+                    title: "Pavel Clean"
 
                 }} component={ScreenHome} />
 
@@ -49,7 +57,9 @@ class stackNavigator {
                 }} component={ScreenLogin} />
 
                 <Stack.Screen name="Register" options={{
-
+                     headerStyle: Style.HeaderBiruNavigation,
+                     headerTitleStyle: Style.HeaderBiruTitleNavigation,
+                     title: null
                 }} component={ScreenRegister} />
 
 
@@ -57,5 +67,17 @@ class stackNavigator {
         )
     }
 }
+
+const Style = StyleSheet.create({
+    HeaderBiruNavigation: {
+        backgroundColor: Colors.ColorPrimary(),
+        elevation: 0
+    },
+    HeaderBiruTitleNavigation: {
+        color: "white",
+        fontSize: RFPercentage(2.9)
+    }
+})
+
 const Nav = new stackNavigator();
 export default Nav;
