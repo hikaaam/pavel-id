@@ -64,7 +64,7 @@ class Register extends Component {
               borderRadius: 12,
               marginHorizontal: RFPercentage(4),
               marginTop: RFPercentage(2),
-              padding: RFPercentage(4),
+              padding: RFPercentage(2.5),
             }}
           >
             <Back />
@@ -128,6 +128,9 @@ class Register extends Component {
                   ref={(input) => {
                     this.Email = input;
                   }}
+                  onChangeText={(txt) => {
+                    this.setState({ email: txt });
+                  }}
                   blurOnSubmit={false}
                   onSubmitEditing={() => {
                     this.Password.focus();
@@ -166,6 +169,9 @@ class Register extends Component {
                   textContentType="password"
                   returnKeyType={"next"}
                   blurOnSubmit={false}
+                  onChangeText={(txt) => {
+                    this.setState({ password: txt });
+                  }}
                   onSubmitEditing={() => {
                     this.PasswordUlang.focus();
                   }}
@@ -202,6 +208,9 @@ class Register extends Component {
                   }}
                   placeholder="Ketikan Ulang Password"
                   textContentType="password"
+                  onChangeText={(txt) => {
+                    this.setState({ passwordUlang: txt });
+                  }}
                   secureTextEntry={true}
                   maxLength={40}
                   style={{
@@ -226,27 +235,29 @@ class Register extends Component {
               paddingBottom: RFPercentage(3),
             }}
           >
-            <View
-              style={{
-                backgroundColor: colors.ColorWhite(),
-                borderRadius: 10,
-                borderWidth: 1.5,
-                borderColor: colors.ColorSecondary(),
-                width: RFPercentage(12),
-                height: RFPercentage(8.5),
-                marginTop: RFPercentage(3),
-                marginRight: RFPercentage(2),
-                alignItems: "center",
-                justifyContent: "center",
-                elevation: 4,
-              }}
-            >
-              <Ionicons
-                name="arrow-back-outline"
-                size={30}
-                color={colors.ColorBlack()}
-              />
-            </View>
+            <TouchableOpacity>
+              <View
+                style={{
+                  backgroundColor: colors.ColorWhite(),
+                  borderRadius: 10,
+                  borderWidth: 1.5,
+                  borderColor: colors.ColorSecondary(),
+                  width: RFPercentage(12),
+                  height: RFPercentage(8.5),
+                  marginTop: RFPercentage(3),
+                  marginRight: RFPercentage(2),
+                  alignItems: "center",
+                  justifyContent: "center",
+                  elevation: 5,
+                }}
+              >
+                <Ionicons
+                  name="arrow-back-outline"
+                  size={30}
+                  color={colors.ColorPrimary()}
+                />
+              </View>
+            </TouchableOpacity>
             {ButtonBiru.Btn("DAFTAR", RFPercentage(3), () => {})}
           </View>
         </View>

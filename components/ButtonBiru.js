@@ -20,7 +20,7 @@ class ButtonBiru extends Component {
           borderWidth: 1,
           borderColor: colors.ColorBorder(),
           borderRadius: 10,
-          elevation: 10,
+          elevation: 5,
         }}
         activeOpacity={0.5}
         onPress={() => {
