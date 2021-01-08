@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 //import screen
 import ScreenHome from "../screen/home/home/";
@@ -34,6 +35,44 @@ class stackNavigator {
             headerStyle: Style.HeaderBiruNavigation,
             headerTitleStyle: Style.HeaderBiruTitleNavigation,
             title: "Pavel Clean",
+            headerRight: () => {
+              return (
+                <TouchableOpacity style={{
+                  width:RFPercentage(8),
+                  // justifyContent:'flex-end',
+                  alignItems:'flex-end'
+                }} onPress={() => { alert("Cart") }}>
+                  <View style={{
+                    height: RFPercentage(5),
+                    width: RFPercentage(5),
+                    marginRight: RFPercentage(2),
+                    backgroundColor: Colors.ColorWhite(),
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    borderRadius: 100
+                  }} >
+                    <Ionicons name="ios-cart-outline" size={RFPercentage(4)} />
+                  </View>
+                  <View style={{
+                    position: 'absolute',
+                    top: RFPercentage(2.7),
+                    left:0,
+                    backgroundColor: Colors.ColorRed(),
+                    width: RFPercentage(3.5),
+                    height: RFPercentage(3.5),
+                    borderRadius: 100,
+                    justifyContent: 'center',
+                    alignItems: 'center'
+                  }}>
+                    <Text style={{
+                      fontSize: RFPercentage(2.5),
+                      fontWeight: "bold",
+                      color: Colors.ColorWhite()
+                    }}>1</Text>
+                  </View>
+                </TouchableOpacity>
+              )
+            }
           }}
           component={ScreenHome}
         />

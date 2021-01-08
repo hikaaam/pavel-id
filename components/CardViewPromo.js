@@ -5,16 +5,18 @@ import { RFPercentage } from 'react-native-responsive-fontsize';
 import Colors from '../colors/colors';
 
 class CardView {
-    Promo(src,text,white,funct) {
+    Promo(src, text,kiri,funct) {
         return (
             <TouchableOpacity style={{
                 width: RFPercentage(25),
-                height: RFPercentage(12),
+                // height: RFPercentage(1),
                 // backgroundColor: Colors.ColorSecondary(),
                 borderRadius: 10,
                 borderColor: Colors.ColorBorder(),
-                borderWidth:0.5
-            }} activeOpacity={0.5} onPress={()=>{
+                borderWidth: 0.5,
+                marginBottom:RFPercentage(3),
+                marginLeft:kiri?RFPercentage(3):0
+            }} activeOpacity={0.5} onPress={() => {
                 funct()
             }}>
                 <ImageBackground source={{ uri: src }} style={{
@@ -23,11 +25,18 @@ class CardView {
                     justifyContent: 'flex-end',
                     alignItems: 'center',
                 }}>
-                    <Text style={{
-                        marginBottom: RFPercentage(2),
-                        color:white?"white":"black"
-                    }}>{text}</Text>
                 </ImageBackground>
+                <View style={{
+                    justifyContent:'center',
+                    alignItems:'center',
+                    paddingVertical:RFPercentage(1),
+                }}>
+                    <Text style={{
+                        color: Colors.ColorBlack(),
+                        fontSize:RFPercentage(1.8),
+                        fontWeight:"bold"
+                    }}>{text}</Text>
+                </View>
             </TouchableOpacity>
         )
     }
