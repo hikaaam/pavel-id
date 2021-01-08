@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   TextInput,
   Alert,
-  KeyboardAvoidingView,
+  StyleSheet,
 } from "react-native";
 
 import {
@@ -73,7 +73,6 @@ class Login extends Component {
             </View>
           </View>
           {/* form */}
-
           <View
             style={{
               marginHorizontal: RFPercentage(4),
@@ -172,7 +171,7 @@ class Login extends Component {
             </TouchableOpacity>
             {/* btn masuk */}
             {ButtonBiru.Btn("MASUK", 30, () => {
-              Alert.alert("masuk email");
+              //this.props.navigation.navigate("Namaclass");
             })}
             <Text
               style={{
