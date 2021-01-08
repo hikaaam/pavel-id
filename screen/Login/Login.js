@@ -7,7 +7,6 @@ import {
   TouchableOpacity,
   TextInput,
   Alert,
-  Stylesheet,
   KeyboardAvoidingView,
 } from "react-native";
 
@@ -19,12 +18,15 @@ import {
   Montserrat_600SemiBold,
   Montserrat_700Bold,
 } from "@expo-google-fonts/montserrat";
-
+import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import { RFPercentage } from "react-native-responsive-fontsize";
+
 import ButtonBiru from "../../components/ButtonBiru";
 import ButtonMasukGoogle from "../../components/ButtonMasukGoogle";
-import { RFPercentage } from "react-native-responsive-fontsize";
+
 import colors from "../../colors/colors";
+import Back from "../../components/backToDevelopment";
 
 // todo : pasang fonts
 
@@ -39,19 +41,21 @@ class Login extends Component {
       <KeyboardAwareScrollView
         style={{ backgroundColor: colors.ColorPrimary() }}
       >
+        <Back />
         <View
           style={{
             flex: 1,
-            marginTop: 80,
+            marginTop: RFPercentage(5.5),
+            justifyContent: "center",
           }}
         >
           <View
             style={{
               alignItems: "center",
-              justifyContent: "center",
-              marginBottom: 20,
+              marginBottom: 15,
             }}
           >
+            {/* Logo aplikasi */}
             <View
               style={{
                 height: 100,
@@ -98,13 +102,19 @@ class Login extends Component {
                   placeholder="Email"
                   textContentType="emailAddress"
                   autoCapitalize="none"
+                  maxLength={255}
+                  returnKeyType={"next"}
+                  onSubmitEditing={() => {
+                    this.Password.focus();
+                  }}
+                  blurOnSubmit={false}
                   style={{
                     backgroundColor: colors.ColorBackground(),
                     height: RFPercentage(7.5),
                     width: "100%",
                     borderRadius: 10,
-                    paddingLeft: RFPercentage(3),
-                    paddingRight: RFPercentage(1),
+                    paddingLeft: RFPercentage(2),
+                    paddingRight: RFPercentage(2),
                     fontSize: RFPercentage(2.5),
                     color: colors.ColorBlack(),
                   }}
@@ -127,6 +137,10 @@ class Login extends Component {
                   placeholder="Password"
                   textContentType="password"
                   secureTextEntry={true}
+                  maxLength={40}
+                  ref={(input) => {
+                    this.Password = input;
+                  }}
                   style={{
                     backgroundColor: colors.ColorBackground(),
                     height: RFPercentage(7.5),
@@ -140,7 +154,11 @@ class Login extends Component {
               </View>
             </View>
             {/* forget password */}
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => {
+                Alert.alert("lupa password");
+              }}
+            >
               <Text
                 style={{
                   fontSize: RFPercentage(2.5),
@@ -152,7 +170,9 @@ class Login extends Component {
               </Text>
             </TouchableOpacity>
             {/* btn masuk */}
-            {ButtonBiru.Btn("MASUK", () => {})}
+            {ButtonBiru.Btn("MASUK", 30, () => {
+              Alert.alert("masuk email");
+            })}
             <Text
               style={{
                 textAlign: "center",
@@ -167,7 +187,7 @@ class Login extends Component {
             <ButtonMasukGoogle
               marginTop={15}
               onPress={() => {
-                Alert.alert("masuk");
+                Alert.alert("masuk Google");
               }}
             />
           </View>

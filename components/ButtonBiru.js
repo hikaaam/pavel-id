@@ -6,12 +6,12 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 import colors from "../colors/colors";
 
 class ButtonBiru extends Component {
-  Btn(msg, funct) {
+  Btn(msg, marginTopSize, funct) {
     return (
       <TouchableOpacity
         style={{
           width: "100%",
-          marginTop: 30,
+          marginTop: marginTopSize,
           height: RFPercentage(8.5),
           backgroundColor: colors.ColorSecondary(),
           justifyContent: "center",

@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  TextInput,
-  Alert,
-} from "react-native";
+import { View, Text, Image, TouchableOpacity, TextInput } from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import colors from "../colors/colors";
 
