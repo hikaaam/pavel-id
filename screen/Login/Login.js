@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   TextInput,
   Alert,
-  StyleSheet,
+  KeyboardAvoidingView,
 } from "react-native";
 
 import {
@@ -22,78 +22,48 @@ import { useNavigation } from "@react-navigation/native";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 import { RFPercentage } from "react-native-responsive-fontsize";
 
+
+//components
 import ButtonBiru from "../../components/ButtonBiru";
 import ButtonMasukGoogle from "../../components/ButtonMasukGoogle";
 
 import colors from "../../colors/colors";
 import Back from "../../components/backToDevelopment";
 
+//import style
+import s from './StyleLogin';
+
 // todo : pasang fonts
 
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      email:"",
+      password:""
+    };
   }
 
   render() {
     return (
-      <KeyboardAwareScrollView
-        style={{ backgroundColor: colors.ColorPrimary() }}
-      >
-        <View
-          style={{
-            flex: 1,
-            marginTop: RFPercentage(5.5),
-            justifyContent: "center",
-          }}
-        >
-          <View
-            style={{
-              alignItems: "center",
-              marginBottom: 15,
-            }}
-          >
-            {/* Logo aplikasi */}
-            <View
-              style={{
-                height: 100,
-                width: 100,
-              }}
-            >
-              <Image
-                style={{
-                  flex: 1,
-                  height: undefined,
-                  width: undefined,
-                  resizeMode: "contain",
-                }}
-                source={require("../../assets/icons/ic_google.png")}
-              />
-            </View>
+      <KeyboardAwareScrollView style={s.KeyboardAware}>
+        <View style={s.LoginViewContainer}  >
+
+          {/* Logo aplikasi */}
+          <View style={s.LoginImageGoogleContainer} >
+            <Image
+              style={s.LoginImageGoogle}
+              source={require("../../assets/icons/ic_google.png")}
+            />
           </View>
+
           {/* form */}
-          <View
-            style={{
-              marginHorizontal: RFPercentage(4),
-              marginTop: 20,
-              marginBottom: 20,
-              backgroundColor: colors.ColorWhite(),
-              flex: 1,
-              borderRadius: 15,
-              padding: 20,
-            }}
-          >
+
+          <View style={s.LoginFormContainer}>
             <Back />
             {/* email */}
             <View style={{ marginBottom: 15 }}>
-              <Text
-                style={{
-                  fontSize: RFPercentage(3),
-                  color: colors.ColorPrimary(),
-                  marginBottom: 8,
-                }}
-              >
+              <Text style={s.LoginFormTextTitle} >
                 Email
               </Text>
               <View>
@@ -103,32 +73,18 @@ class Login extends Component {
                   autoCapitalize="none"
                   maxLength={255}
                   returnKeyType={"next"}
+                  onChangeText={(txt) => { this.setState({ email: txt }) }}
                   onSubmitEditing={() => {
                     this.Password.focus();
                   }}
                   blurOnSubmit={false}
-                  style={{
-                    backgroundColor: colors.ColorBackground(),
-                    height: RFPercentage(7.5),
-                    width: "100%",
-                    borderRadius: 10,
-                    paddingLeft: RFPercentage(2),
-                    paddingRight: RFPercentage(2),
-                    fontSize: RFPercentage(2.5),
-                    color: colors.ColorBlack(),
-                  }}
+                  style={s.LoginFormTextInput}
                 />
               </View>
             </View>
             {/* password */}
             <View style={{ marginBottom: 15 }}>
-              <Text
-                style={{
-                  fontSize: RFPercentage(3),
-                  color: colors.ColorPrimary(),
-                  marginBottom: 8,
-                }}
-              >
+              <Text style={s.LoginFormTextTitle}>
                 Password
               </Text>
               <View>
@@ -140,16 +96,8 @@ class Login extends Component {
                   ref={(input) => {
                     this.Password = input;
                   }}
-                  style={{
-                    backgroundColor: colors.ColorBackground(),
-                    height: RFPercentage(7.5),
-                    width: "100%",
-                    borderRadius: 10,
-                    paddingLeft: RFPercentage(2),
-                    paddingRight: RFPercentage(2),
-                    fontSize: RFPercentage(2.5),
-                    color: colors.ColorBlack(),
-                  }}
+                  onChangeText={(txt) => { this.setState({ password: txt }) }}
+                  style={s.LoginFormTextInput}
                 />
               </View>
             </View>
@@ -159,28 +107,15 @@ class Login extends Component {
                 Alert.alert("lupa password");
               }}
             >
-              <Text
-                style={{
-                  fontSize: RFPercentage(2.5),
-                  color: colors.ColorSecondary(),
-                  fontWeight: "400",
-                }}
-              >
+              <Text style={s.LoginTextLupaPassword}>
                 Lupa password?
               </Text>
             </TouchableOpacity>
             {/* btn masuk */}
             {ButtonBiru.Btn("MASUK", 30, () => {
-              //this.props.navigation.navigate("Namaclass");
+              Alert.alert("masuk email");
             })}
-            <Text
-              style={{
-                textAlign: "center",
-                marginTop: 15,
-                fontSize: RFPercentage(2.5),
-                color: colors.ColorBlack(),
-              }}
-            >
+            <Text style={s.LoginTextAtau} >
               Atau
             </Text>
             {/* btn masuk dengan google */}
@@ -188,37 +123,20 @@ class Login extends Component {
               marginTop={15}
               onPress={() => {
                 Alert.alert("masuk Google");
-              }}
-            />
+              }} />
           </View>
           {/* daftar */}
-          <View
-            style={{
-              height: RFPercentage(7),
-              alignItems: "center",
-            }}
-          >
-            <View style={{ flexDirection: "row", flex: 1 }}>
-              <Text
-                style={{
-                  fontSize: RFPercentage(2.5),
-                  color: colors.ColorWhite(),
-                }}
-              >
-                Belum punya akun?
+
+          <View style={{ flexDirection: "row", flex: 1, justifyContent: 'center' }}>
+            <Text style={s.LoginTextBelumPunyaAkun}>
+              Belum punya akun?
               </Text>
-              <TouchableOpacity>
-                <Text
-                  style={{
-                    left: 5,
-                    color: colors.ColorWhite(),
-                    fontSize: RFPercentage(2.5),
-                  }}
-                >
-                  Daftar
+            <TouchableOpacity>
+              <Text
+                style={s.LoginTextDaftar} >
+                Daftar
                 </Text>
-              </TouchableOpacity>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
       </KeyboardAwareScrollView>
