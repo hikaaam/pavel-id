@@ -10,7 +10,7 @@ const header = () => {
     <View
       style={{
         width: "100%",
-        height: RFPercentage(30),
+        height: RFPercentage(40),
         backgroundColor: colors.ColorPrimary(),
         borderBottomRightRadius: 70,
         borderBottomLeftRadius: 20,

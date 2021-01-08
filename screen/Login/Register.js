@@ -1,6 +1,8 @@
 import React, { Component } from "react";
+import { StatusBar } from "expo";
 import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 //Components
@@ -14,7 +16,12 @@ import colors from "../../colors/colors";
 class Register extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      nama: "",
+      email: "",
+      password: "",
+      passwordUlang: "",
+    };
   }
 
   render() {
@@ -22,7 +29,7 @@ class Register extends Component {
       <KeyboardAwareScrollView
         style={{ backgroundColor: colors.ColorBackground() }}
       >
-        <View style={{ flex: 1, paddingTop: RFPercentage(6) }}>
+        <View style={{ flex: 1, paddingTop: RFPercentage(6.5) }}>
           <Header />
           {/* tulisan header */}
           <View style={{ alignItems: "center" }}>
@@ -49,7 +56,6 @@ class Register extends Component {
             </Text>
           </View>
           {/* {CardViewPromo.Promo("kielinkfoto","Test",true,()=>{})} */}
-          {/* {ButtonBiru.Btn("MASUK",()=>{})} */}
           <Back />
           {/* form */}
           <View
@@ -75,12 +81,13 @@ class Register extends Component {
               <View>
                 <TextInput
                   placeholder="Nama"
+                  // selectionColor="#cccc"
                   textContentType="name"
                   autoCapitalize="none"
                   maxLength={255}
                   returnKeyType={"next"}
-                  onSubmitEditing={() => {
-                    this.Password.focus();
+                  onChangeText={(txt) => {
+                    this.setState({ nama: txt });
                   }}
                   blurOnSubmit={false}
                   style={{
@@ -115,10 +122,6 @@ class Register extends Component {
                   maxLength={255}
                   returnKeyType={"next"}
                   keyboardType="email-address"
-                  onSubmitEditing={() => {
-                    this.Password.focus();
-                  }}
-                  blurOnSubmit={false}
                   style={{
                     backgroundColor: colors.ColorBackground(),
                     height: RFPercentage(7.5),
@@ -147,11 +150,9 @@ class Register extends Component {
                 <TextInput
                   placeholder="Password"
                   textContentType="password"
+                  returnKeyType={"next"}
                   secureTextEntry={true}
                   maxLength={40}
-                  ref={(input) => {
-                    this.Password = input;
-                  }}
                   style={{
                     backgroundColor: colors.ColorBackground(),
                     height: RFPercentage(7.5),
@@ -174,17 +175,14 @@ class Register extends Component {
                   marginBottom: RFPercentage(1.2),
                 }}
               >
-                Password
+                Ketikan Ulang Password
               </Text>
               <View>
                 <TextInput
-                  placeholder="Password"
+                  placeholder="Ketikan Ulang Password"
                   textContentType="password"
                   secureTextEntry={true}
                   maxLength={40}
-                  ref={(input) => {
-                    this.Password = input;
-                  }}
                   style={{
                     backgroundColor: colors.ColorBackground(),
                     height: RFPercentage(7.5),
@@ -204,7 +202,7 @@ class Register extends Component {
             style={{
               flexDirection: "row",
               marginHorizontal: RFPercentage(4),
-              marginBottom: RFPercentage(3),
+              paddingBottom: RFPercentage(3),
             }}
           >
             <View
@@ -219,9 +217,14 @@ class Register extends Component {
                 marginRight: RFPercentage(2),
                 alignItems: "center",
                 justifyContent: "center",
+                elevation: 4,
               }}
             >
-              <Text>back</Text>
+              <Ionicons
+                name="arrow-back-outline"
+                size={30}
+                color={colors.ColorBlack()}
+              />
             </View>
             {ButtonBiru.Btn("DAFTAR", RFPercentage(3), () => {})}
           </View>
