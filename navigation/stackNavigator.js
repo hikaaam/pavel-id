@@ -61,7 +61,7 @@ class stackNavigator {
         <Stack.Screen
           name="Register"
           options={{
-            headerStyle: Style.HeaderBiruNavigation,
+            headerShown: null,
             headerTitleStyle: Style.HeaderBiruTitleNavigation,
             title: null,
           }}

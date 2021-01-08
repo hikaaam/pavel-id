@@ -10,6 +10,7 @@ class ButtonBiru extends Component {
     return (
       <TouchableOpacity
         style={{
+          flex: 1,
           width: "100%",
           marginTop: marginTopSize,
           height: RFPercentage(8.5),
