@@ -56,7 +56,7 @@ class Register extends Component {
             </Text>
           </View>
           {/* {CardViewPromo.Promo("kielinkfoto","Test",true,()=>{})} */}
-          <Back />
+
           {/* form */}
           <View
             style={{
@@ -67,6 +67,7 @@ class Register extends Component {
               padding: RFPercentage(4),
             }}
           >
+            <Back />
             {/* Nama */}
             <View style={{ marginBottom: RFPercentage(2.2) }}>
               <Text
@@ -90,6 +91,9 @@ class Register extends Component {
                     this.setState({ nama: txt });
                   }}
                   blurOnSubmit={false}
+                  onSubmitEditing={() => {
+                    this.Email.focus();
+                  }}
                   style={{
                     backgroundColor: colors.ColorBackground(),
                     height: RFPercentage(7.5),
@@ -121,6 +125,13 @@ class Register extends Component {
                   autoCapitalize="none"
                   maxLength={255}
                   returnKeyType={"next"}
+                  ref={(input) => {
+                    this.Email = input;
+                  }}
+                  blurOnSubmit={false}
+                  onSubmitEditing={() => {
+                    this.Password.focus();
+                  }}
                   keyboardType="email-address"
                   style={{
                     backgroundColor: colors.ColorBackground(),
@@ -148,9 +159,16 @@ class Register extends Component {
               </Text>
               <View>
                 <TextInput
+                  ref={(input) => {
+                    this.Password = input;
+                  }}
                   placeholder="Password"
                   textContentType="password"
                   returnKeyType={"next"}
+                  blurOnSubmit={false}
+                  onSubmitEditing={() => {
+                    this.PasswordUlang.focus();
+                  }}
                   secureTextEntry={true}
                   maxLength={40}
                   style={{
@@ -179,6 +197,9 @@ class Register extends Component {
               </Text>
               <View>
                 <TextInput
+                  ref={(input) => {
+                    this.PasswordUlang = input;
+                  }}
                   placeholder="Ketikan Ulang Password"
                   textContentType="password"
                   secureTextEntry={true}
