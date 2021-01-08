@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { AppLoading } from "expo";
+import { StatusBar } from "expo";
 import {
   View,
   Text,
@@ -41,7 +41,6 @@ class Login extends Component {
       <KeyboardAwareScrollView
         style={{ backgroundColor: colors.ColorPrimary() }}
       >
-        <Back />
         <View
           style={{
             flex: 1,
@@ -86,6 +85,7 @@ class Login extends Component {
               padding: 20,
             }}
           >
+            <Back />
             {/* email */}
             <View style={{ marginBottom: 15 }}>
               <Text
@@ -146,7 +146,8 @@ class Login extends Component {
                     height: RFPercentage(7.5),
                     width: "100%",
                     borderRadius: 10,
-                    paddingLeft: RFPercentage(3),
+                    paddingLeft: RFPercentage(2),
+                    paddingRight: RFPercentage(2),
                     fontSize: RFPercentage(2.5),
                     color: colors.ColorBlack(),
                   }}
