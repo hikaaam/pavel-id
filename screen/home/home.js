@@ -105,7 +105,7 @@ class home extends Component {
           >
             <Text
               style={{
-                fontWeight: "400",
+                fontWeight: "bold",
                 fontSize: RFPercentage(3),
                 color: colors.ColorBlack(),
               }}
@@ -116,7 +116,7 @@ class home extends Component {
               style={{
                 fontSize: RFPercentage(2.2),
                 color: colors.ColorGraySecondary(),
-                fontWeight: "300",
+                fontWeight: "normal",
                 marginBottom: RFPercentage(1),
               }}
             >
@@ -133,13 +133,13 @@ class home extends Component {
                 style={{
                   flexDirection: "row",
                   justifyContent: "space-between",
-                  marginBottom: RFPercentage(2),
-                  marginTop: RFPercentage(2),
+                  marginTop: RFPercentage(3),
+                  marginBottom: RFPercentage(3),
                 }}
               >
                 {this.renderLayananIcon(
-                  "ios-ice-cream",
-                  colors.ColorRed(),
+                  "flash-outline",
+                  "#ffce47",
                   "Fast Clean",
                   () => {
                     alert("Fast Clean");
@@ -154,8 +154,8 @@ class home extends Component {
                   }
                 )}
                 {this.renderLayananIcon(
-                  "ios-flask",
-                  colors.ColorRed(),
+                  "repeat-outline",
+                  "#d59d01",
                   "Unyellowing",
                   () => {
                     alert("Unyellowing");
@@ -169,24 +169,24 @@ class home extends Component {
                 }}
               >
                 {this.renderLayananIcon(
-                  "ios-ice-cream",
-                  colors.ColorRed(),
+                  "bandage-outline",
+                  "#9a895b",
                   "Leather Treatment",
                   () => {
                     alert("Leather Treatment");
                   }
                 )}
                 {this.renderLayananIcon(
-                  "ios-medical",
-                  colors.ColorRed(),
+                  "brush-outline",
+                  "#0dbf28",
                   "Pengelaman Ulang",
                   () => {
                     alert("Pengeleman Ulang");
                   }
                 )}
                 {this.renderLayananIcon(
-                  "ios-flask",
-                  colors.ColorRed(),
+                  "color-palette-outline",
+                  "#198cf0",
                   "Repaint",
                   () => {
                     alert("Repaint");
@@ -203,7 +203,7 @@ class home extends Component {
             <Text
               style={{
                 fontSize: RFPercentage(3),
-                fontWeight: "400",
+                fontWeight: "bold",
                 color: colors.ColorBlack(),
               }}
             >
@@ -213,7 +213,7 @@ class home extends Component {
               style={{
                 fontSize: RFPercentage(2.2),
                 color: colors.ColorGraySecondary(),
-                fontWeight: "300",
+                fontWeight: "normal",
               }}
             >
               Nikmati promo dengan harga terbaik
@@ -282,7 +282,7 @@ class home extends Component {
         >
           <Text
             style={{
-              fontWeight: "bold",
+              fontWeight: "normal",
               fontSize: RFPercentage(2),
               color: colors.ColorGraySecondary(),
               textAlign: "center",

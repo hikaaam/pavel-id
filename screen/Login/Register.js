@@ -36,7 +36,7 @@ class Register extends Component {
             <Text
               style={{
                 fontSize: RFPercentage(3.5),
-                fontWeight: "600",
+                fontWeight: "bold",
                 color: colors.ColorWhite(),
               }}
             >
@@ -84,7 +84,6 @@ class Register extends Component {
                   placeholder="Nama"
                   // selectionColor="#cccc"
                   textContentType="name"
-                  autoCapitalize="none"
                   maxLength={255}
                   returnKeyType={"next"}
                   onChangeText={(txt) => {
@@ -235,28 +234,27 @@ class Register extends Component {
               paddingBottom: RFPercentage(3),
             }}
           >
-            <TouchableOpacity>
-              <View
-                style={{
-                  backgroundColor: colors.ColorWhite(),
-                  borderRadius: 10,
-                  borderWidth: 1.5,
-                  borderColor: colors.ColorSecondary(),
-                  width: RFPercentage(12),
-                  height: RFPercentage(8.5),
-                  marginTop: RFPercentage(3),
-                  marginRight: RFPercentage(2),
-                  alignItems: "center",
-                  justifyContent: "center",
-                  elevation: 5,
-                }}
-              >
-                <Ionicons
-                  name="arrow-back-outline"
-                  size={30}
-                  color={colors.ColorPrimary()}
-                />
-              </View>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={{
+                backgroundColor: colors.ColorWhite(),
+                borderRadius: 10,
+                borderWidth: 1.5,
+                borderColor: colors.ColorSecondary(),
+                width: RFPercentage(12),
+                height: RFPercentage(8.5),
+                marginTop: RFPercentage(3),
+                marginRight: RFPercentage(2),
+                alignItems: "center",
+                justifyContent: "center",
+                elevation: 5,
+              }}
+            >
+              <Ionicons
+                name="arrow-back-outline"
+                size={30}
+                color={colors.ColorPrimary()}
+              />
             </TouchableOpacity>
             {ButtonBiru.Btn("DAFTAR", RFPercentage(3), () => {})}
           </View>
