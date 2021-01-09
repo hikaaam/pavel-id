@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
 
+import Back from '../../components/backToDevelopment';
+
 class feed extends Component {
   constructor(props) {
     super(props);
@@ -16,6 +18,7 @@ class feed extends Component {
         alignItems:'center'
     }}>
         <Text> feed </Text>
+        <Back />
       </View>
     );
   }

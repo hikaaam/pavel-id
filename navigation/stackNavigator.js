@@ -90,7 +90,14 @@ class stackNavigator {
           component={ScreenHome}
         />
 
-        <Stack.Screen name="Order" options={{}} component={ScreenOrder} />
+        <Stack.Screen name="Order" options={{
+          headerStyle:{
+            backgroundColor:Colors.ColorPrimary(),
+          },
+          headerTitleStyle:{
+            color:Colors.ColorWhite()
+          }
+        }} component={ScreenOrder} />
 
         <Stack.Screen
           name="Keranjang"
