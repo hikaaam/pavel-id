@@ -40,6 +40,10 @@ class colors extends Component {
   ColorBorder() {
     return "#808080aa";
   }
+
+  ColorGrayFade() {
+    return "#E0E0E0E0";
+  }
 }
 
 const warna = new colors();

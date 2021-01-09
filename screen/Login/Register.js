@@ -65,6 +65,7 @@ class Register extends Component {
               marginHorizontal: RFPercentage(4),
               marginTop: RFPercentage(2),
               padding: RFPercentage(2.5),
+              elevation: 4,
             }}
           >
             <Back />
@@ -253,7 +254,7 @@ class Register extends Component {
               <Ionicons
                 name="arrow-back-outline"
                 size={30}
-                color={colors.ColorPrimary()}
+                color={colors.ColorSecondary()}
               />
             </TouchableOpacity>
             {ButtonBiru.Btn("DAFTAR", RFPercentage(3), () => {})}

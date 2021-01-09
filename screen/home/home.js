@@ -120,7 +120,7 @@ class home extends Component {
                 marginBottom: RFPercentage(1),
               }}
             >
-              Pilih layanan terbaik untuk anda
+              Pilih layanan terbaik untuk Anda
             </Text>
             <Back />
             <View
@@ -179,7 +179,7 @@ class home extends Component {
                 {this.renderLayananIcon(
                   "brush-outline",
                   "#0dbf28",
-                  "Pengelaman Ulang",
+                  "Pengeleman Ulang",
                   () => {
                     alert("Pengeleman Ulang");
                   }
@@ -272,25 +272,27 @@ class home extends Component {
               size={RFPercentage(8)}
             />
           </View>
-        </TouchableOpacity>
-        <View
-          style={{
-            width: RFPercentage(12),
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <Text
+
+          <View
             style={{
-              fontWeight: "normal",
-              fontSize: RFPercentage(2),
-              color: colors.ColorGraySecondary(),
-              textAlign: "center",
+              width: RFPercentage(12),
+              justifyContent: "center",
+              alignItems: "center",
+              top: RFPercentage(0.7),
             }}
           >
-            {text}
-          </Text>
-        </View>
+            <Text
+              style={{
+                fontWeight: "normal",
+                fontSize: RFPercentage(2),
+                color: colors.ColorGraySecondary(),
+                textAlign: "center",
+              }}
+            >
+              {text}
+            </Text>
+          </View>
+        </TouchableOpacity>
       </View>
     );
   }

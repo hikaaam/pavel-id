@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Pavel-id",
+    "githubUrl": "https://github.com/hikaaam/pavel-id"
   }
 }
