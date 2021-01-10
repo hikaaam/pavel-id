@@ -235,6 +235,18 @@ class home extends Component {
                 true,
                 () => {}
               )}
+              {Promo.Promo(
+                "https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1",
+                "Fast Clean + Unyellowing",
+                true,
+                () => {}
+              )}
+              {Promo.Promo(
+                "https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1",
+                "Fast Clean + Unyellowing",
+                true,
+                () => {}
+              )}
             </ScrollView>
           </View>
         </View>

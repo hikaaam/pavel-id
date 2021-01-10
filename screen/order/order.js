@@ -8,6 +8,8 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 import Back from "../../components/backToDevelopment";
 import { TextInput } from "react-native-gesture-handler";
 import btn from "../../components/ButtonBiru";
+import LabelText from "../../components/LabelText";
+import TextHarga from "../../components/TextHarga";
 
 //colors
 import colors from "../../colors/colors";
@@ -69,18 +71,10 @@ class order extends Component {
             <View
               style={{
                 borderColor: colors.ColorGrayFade(),
-                borderBottomWidth: 2,
+                borderBottomWidth: 1,
               }}
             >
-              <Text
-                style={{
-                  fontSize: RFPercentage(2.5),
-                  fontWeight: "bold",
-                  color: colors.ColorBlack(),
-                }}
-              >
-                Detail Layanan
-              </Text>
+              <LabelText text="Detail Layanan" fontWeight="bold" />
               <Text
                 style={{
                   fontSize: RFPercentage(2),
@@ -95,27 +89,18 @@ class order extends Component {
               {this.RenderDetailLayanan("dolores")}
               {this.RenderDetailLayanan("sit amet")}
             </View>
-            <Back />
             <View
               style={{
                 flexDirection: "row",
                 width: "100%",
                 justifyContent: "space-between",
                 alignItems: "center",
-                borderBottomWidth: 2,
+                borderBottomWidth: 1,
                 paddingVertical: RFPercentage(1.5),
                 borderColor: colors.ColorGrayFade(),
               }}
             >
-              <Text
-                style={{
-                  fontSize: RFPercentage(2.5),
-                  fontWeight: "bold",
-                  color: colors.ColorBlack(),
-                }}
-              >
-                Jumlah Order
-              </Text>
+              <LabelText text="Jumlah Order" fontWeight="bold" />
               <View
                 style={{
                   flexDirection: "row",
@@ -224,30 +209,17 @@ class order extends Component {
                 width: "100%",
                 justifyContent: "space-between",
                 alignItems: "center",
-                borderBottomWidth: 2,
+                borderBottomWidth: 1,
                 paddingVertical: RFPercentage(1.5),
                 borderColor: colors.ColorGrayFade(),
               }}
             >
-              <Text
-                style={{
-                  fontSize: RFPercentage(2.5),
-                  fontWeight: "bold",
-                  color: colors.ColorBlack(),
-                }}
-              >
-                Biaya
-              </Text>
-              <Text
-                style={{
-                  fontSize: RFPercentage(3.5),
-                  fontWeight: "bold",
-                  color: colors.ColorPrimary(),
-                  paddingVertical: RFPercentage(1),
-                }}
-              >
-                Rp {this.state.harga}
-              </Text>
+              <LabelText text="Biaya" fontWeight="bold" />
+              <TextHarga
+                text={"Rp " + this.state.harga}
+                color={colors.ColorSecondary()}
+                fontWeight="bold"
+              />
             </View>
             <View
               style={{
@@ -256,15 +228,8 @@ class order extends Component {
                 paddingVertical: RFPercentage(1.5),
               }}
             >
-              <Text
-                style={{
-                  fontSize: RFPercentage(2.5),
-                  fontWeight: "bold",
-                  color: colors.ColorBlack(),
-                }}
-              >
-                Catatan
-              </Text>
+              <LabelText text="Catatan" fontWeight="bold" />
+              <Back />
               <TextInput
                 multiline
                 maxLength={255}
@@ -303,7 +268,7 @@ class order extends Component {
               />
             </View>
             <View style={{ marginBottom: RFPercentage(1.5) }}>
-              {btn.Btn("Tambahkan Ke Keranjang", 0, () => {
+              {btn.Btn("TAMBAH KE KERANJANG", 0, () => {
                 alert("Tambah ke keranjang");
               })}
             </View>

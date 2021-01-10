@@ -16,7 +16,11 @@ import {
 import Back from "../../components/backToDevelopment";
 import Btn from "../../components/ButtonBiru";
 import CustomButton from "../../components/CustomSizeButtonBiru";
-import CustomLabel from "../../components/CustomLabelInput";
+import LabelText from "../../components/LabelText";
+import TextHarga from "../../components/TextHarga";
+import ButtonHelp from "../../components/ButtonHelp";
+import ButtonGunakanPromo from "../../components/ButtonGunakanPromo";
+import CardViewItem from "../../components/CardViewItemKeranjang";
 
 //color
 import colors from "../../colors/colors";
@@ -25,7 +29,11 @@ class keranjang extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isFocus: false,
       area: "tegal",
+      alamat: "",
+      ongkir: "5000",
+      total: "20000",
     };
   }
 
@@ -35,130 +43,31 @@ class keranjang extends Component {
         style={{ backgroundColor: colors.ColorBackground() }}
       >
         <View style={{}}>
-          {/* container item */}
-          <View
-            style={{
-              backgroundColor: colors.ColorWhite(),
-              elevation: 4,
-              marginHorizontal: RFPercentage(2),
-              marginTop: RFPercentage(1),
-              borderRadius: 10,
-              padding: RFPercentage(1),
-            }}
-          >
-            <View style={{ flexDirection: "row" }}>
-              {/* foto barang */}
-              <View
-                style={{ width: RFPercentage(11), height: RFPercentage(11) }}
-              >
-                <Image
-                  style={{
-                    flex: 1,
-                    height: undefined,
-                    width: undefined,
-                    resizeMode: "cover",
-                    borderRadius: 10,
-                  }}
-                  source={{
-                    uri:
-                      "https://cdn-brilio-net.akamaized.net/video/2017/10/10/146649/682899-5-sepatu-termahal-di-dunia-yang-harganya-lebih-mahal-dari-supercar-ada-di-dindonesia-mahasiswa-abadi.jpg",
-                  }}
-                />
-              </View>
-              {/* detail barang */}
-              <View
-                style={{
-                  left: RFPercentage(1),
-                  flex: 1,
-                  width: "100%",
-                }}
-              >
-                <View
-                  style={{
-                    flexDirection: "row",
-                    width: "100%",
-                  }}
-                >
-                  <Text
-                    style={{
-                      color: colors.ColorBlack(),
-                      fontWeight: "600",
-                      fontSize: RFPercentage(3),
-                      width: "80%",
-                      flex: 1,
-                      color: colors.ColorSecondary(),
-                    }}
-                  >
-                    Sepatu Fast Clean + Unyellowing
-                  </Text>
-                  <Pressable
-                    onPress={() => {
-                      alert("item dibuang");
-                    }}
-                  >
-                    <Ionicons
-                      name="trash-outline"
-                      color={colors.ColorBlack()}
-                      size={RFPercentage(4)}
-                      style={{ right: RFPercentage(1) }}
-                    />
-                  </Pressable>
-                </View>
-                {/* jumlah barang */}
-                <View
-                  style={{
-                    flexDirection: "row",
-                    alignItems: "center",
-                    backgroundColor: "white",
-                  }}
-                >
-                  <Text>Jumlah :</Text>
-                  <Text
-                    style={{
-                      left: RFPercentage(1),
-                      fontSize: RFPercentage(2.5),
-                      color: colors.ColorSecondary(),
-                      fontWeight: "bold",
-                    }}
-                  >
-                    1
-                  </Text>
-                </View>
-              </View>
-            </View>
-            {/* catatan */}
-            <View
-              style={{
-                flexDirection: "row",
-                borderWidth: 1,
-                borderRadius: 3,
-                borderColor: colors.ColorGrayFade(),
-                padding: RFPercentage(1),
-                marginTop: RFPercentage(1),
-              }}
-            >
-              <Text>Catatan :</Text>
-              <Text
-                numberOfLines={3}
-                style={{ paddingLeft: RFPercentage(1), flex: 1, width: "75%" }}
-              >
-                Lorem ipsum dolor sit amet asdasd asasj dkas hdashd jasdhasj
-                dhas jdas dashd has djhasdjashdasjdhasdjashddjas asj
-                dashdasdhjdh asjdh asj hdajshdjs ahsdha dhja hdjas hdjas
-                hdjahdasjdh asjdashdasjdhasjh dasj dh asdj
-              </Text>
-              <Back />
-            </View>
-          </View>
+          {/* card item */}
+          <CardViewItem
+            nama="Fast Clean + Unyellowing"
+            jumlah="1"
+            catatan="Lorem ipsum dolor sit amet weleh weleh"
+            image="http://fs.genpi.co/uploads/news/normal/2019/04/24/aca9a6e2364d9ee86aa0e0275832cb72.jpg"
+          />
+          <CardViewItem
+            nama="Deep Clean + Unyellowing"
+            jumlah="10"
+            catatan="Lorem ipsum dolor sit amet weleh weleh x 10"
+            image="https://cdn-brilio-net.akamaized.net/video/2017/10/10/146649/682899-5-sepatu-termahal-di-dunia-yang-harganya-lebih-mahal-dari-supercar-ada-di-dindonesia-mahasiswa-abadi.jpg"
+          />
           {/* btn tambah item */}
           <View
             style={{
               marginHorizontal: RFPercentage(2),
               marginTop: RFPercentage(2),
               marginBottom: RFPercentage(2),
-              alignItems: "flex-end",
+              justifyContent: "space-between",
+              alignItems: "center",
+              flexDirection: "row",
             }}
           >
+            <LabelText text="Total Item: 2" />
             <CustomButton
               txt="Tambah Item"
               height={RFPercentage(5)}
@@ -173,7 +82,7 @@ class keranjang extends Component {
           <View
             style={{
               marginHorizontal: RFPercentage(2),
-              borderTopWidth: 2,
+              borderTopWidth: 1,
               borderTopColor: colors.ColorGrayFade(),
             }}
           >
@@ -184,29 +93,21 @@ class keranjang extends Component {
               }}
             >
               <View style={{ flexDirection: "row" }}>
-                <CustomLabel text="Outlet Area" />
-                <TouchableOpacity
-                  style={{ left: RFPercentage(1) }}
+                <LabelText text="Outlet Area" />
+                <ButtonHelp
                   onPress={() => {
-                    alert("?");
+                    alert("informasi tentang outlet yang tersedia");
                   }}
-                >
-                  <Ionicons
-                    name="help-circle-outline"
-                    size={20}
-                    color={colors.ColorSecondary()}
-                  />
-                </TouchableOpacity>
+                />
               </View>
               <View
                 style={{
-                  backgroundColor: colors.ColorWhite(),
+                  backgroundColor: colors.ColorBackground(),
                   borderRadius: 10,
                   borderWidth: 2,
-                  borderColor: colors.ColorSecondary(),
-                  paddingLeft: RFPercentage(2),
-                  paddingRight: RFPercentage(2),
+                  borderColor: colors.ColorGrayPrimary(),
                   flex: 1,
+                  paddingRight: RFPercentage(1),
                   justifyContent: "center",
                 }}
               >
@@ -214,7 +115,7 @@ class keranjang extends Component {
                   selectedValue={this.state.area}
                   style={{
                     height: RFPercentage(7),
-                    width: "100%",
+                    flex: 1,
                     fontSize: RFPercentage(5),
                   }}
                   onValueChange={(itemValue, itemIndex) =>
@@ -227,44 +128,55 @@ class keranjang extends Component {
               </View>
             </View>
             <View style={{ marginBottom: RFPercentage(2) }}>
-              <CustomLabel text="Alamat Pickup" />
-              <View
-                style={{
-                  backgroundColor: colors.ColorWhite(),
-                  borderRadius: 10,
-                  borderWidth: 2,
-                  borderColor: colors.ColorSecondary(),
-                  paddingLeft: RFPercentage(2),
-                  paddingTop: RFPercentage(0.5),
-                  paddingBottom: RFPercentage(0.5),
-                  flex: 1,
-                }}
-              >
-                <View style={{ flexDirection: "row" }}>
-                  <TextInput
-                    multiline
-                    style={{
-                      flex: 1,
-                      height: RFPercentage(8),
-
-                      fontSize: RFPercentage(2.2),
-                    }}
+              <LabelText text="Alamat Pickup" />
+              <Back />
+              <View style={{ flexDirection: "row" }}>
+                <TextInput
+                  multiline
+                  placeholder="Masukan alamat Anda"
+                  onFocus={() => {
+                    this.setState({
+                      isFocus: true,
+                    });
+                  }}
+                  onBlur={() => {
+                    this.setState({
+                      isFocus: false,
+                    });
+                  }}
+                  onChangeText={(txt) => {
+                    this.setState({
+                      alamat: txt,
+                    });
+                  }}
+                  style={{
+                    flex: 1,
+                    height: RFPercentage(7),
+                    fontSize: RFPercentage(2.2),
+                    borderWidth: 2,
+                    borderRadius: 10,
+                    padding: RFPercentage(1),
+                    borderColor: this.state.isFocus
+                      ? colors.ColorSecondary()
+                      : colors.ColorGrayPrimary(),
+                  }}
+                />
+                <Pressable
+                  style={{
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: RFPercentage(8),
+                  }}
+                  onPress={() => {
+                    alert("map");
+                  }}
+                >
+                  <Ionicons
+                    name="map-outline"
+                    size={RFPercentage(6.5)}
+                    color={colors.ColorSecondary()}
                   />
-                  <Pressable
-                    style={{
-                      borderLeftWidth: 2,
-                      borderColor: colors.ColorSecondary(),
-                      alignItems: "center",
-                      justifyContent: "center",
-                      width: RFPercentage(8),
-                    }}
-                    onPress={() => {
-                      alert("map");
-                    }}
-                  >
-                    <Ionicons name="map-outline" size={RFPercentage(6.5)} />
-                  </Pressable>
-                </View>
+                </Pressable>
               </View>
             </View>
             <View
@@ -272,121 +184,44 @@ class keranjang extends Component {
                 marginBottom: RFPercentage(2),
               }}
             >
-              <View style={{ marginBottom: RFPercentage(2) }}>
+              <View style={{ marginBottom: RFPercentage(1) }}>
                 <View style={{ flexDirection: "row" }}>
-                  <CustomLabel text="Biaya" />
-                  <TouchableOpacity
-                    style={{ left: RFPercentage(1) }}
+                  <LabelText text="Biaya Kurir" />
+                  <ButtonHelp
+                    flex={1}
                     onPress={() => {
-                      alert("?");
+                      alert("informasi tentang kenapa harga sekian");
                     }}
-                  >
-                    <Ionicons
-                      name="help-circle-outline"
-                      size={20}
-                      color={colors.ColorSecondary()}
-                    />
-                  </TouchableOpacity>
+                  />
+                  <TextHarga
+                    text={"Rp " + this.state.ongkir}
+                    color={colors.ColorSecondary()}
+                  />
                 </View>
                 <View
                   style={{
                     flexDirection: "row",
                     justifyContent: "space-between",
-                    alignItems: "center",
+                    borderBottomWidth: 1,
+                    borderColor: colors.ColorGrayFade(),
+                    paddingBottom: RFPercentage(2),
                   }}
                 >
-                  <Text
-                    style={{
-                      color: colors.ColorSecondary(),
-                      fontWeight: "bold",
-                      fontSize: RFPercentage(3.5),
-                    }}
-                  >
-                    Rp 5000
-                  </Text>
-                  <TouchableOpacity
-                    style={{
-                      flexDirection: "row",
-                      alignItems: "center",
-                      borderWidth: 1,
-                      borderColor: colors.ColorSecondary(),
-                      borderRadius: 4,
-                      padding: RFPercentage(1),
-                    }}
-                    onPress={() => {
-                      alert("menggunakan promo");
-                    }}
-                  >
-                    <Ionicons
-                      name="pricetags-outline"
-                      size={RFPercentage(2.5)}
-                      style={{}}
-                    />
-                    <Text
-                      style={{
-                        fontSize: RFPercentage(2),
-                        color: colors.ColorPrimary(),
-                        marginLeft: RFPercentage(1),
-                      }}
-                    >
-                      Gunakan Promo
-                    </Text>
-                  </TouchableOpacity>
+                  <LabelText text="Total" />
+                  <TextHarga
+                    text={"Rp " + this.state.total}
+                    color={colors.ColorSecondary()}
+                  />
                 </View>
               </View>
             </View>
-            {/* button checkout */}
-            <TouchableOpacity
-              style={{
-                flex: 1,
-                width: "100%",
-                marginTop: RFPercentage(1),
-                height: RFPercentage(8.5),
-                backgroundColor: colors.ColorSecondary(),
-                justifyContent: "center",
-                alignItems: "center",
-                borderWidth: 1,
-                borderColor: colors.ColorBorder(),
-                borderRadius: 10,
-                elevation: 5,
-                marginBottom: RFPercentage(2),
-              }}
-              onPress={() => {
-                alert("cek out");
-              }}
-            >
-              <View
-                style={{
-                  flexDirection: "row",
-                  marginHorizontal: RFPercentage(2),
-                  alignItems: "center",
-                }}
-              >
-                <Text
-                  style={{
-                    fontSize: RFPercentage(3),
-                    color: colors.ColorWhite(),
-                    flex: 1,
-                  }}
-                >
-                  Total
-                </Text>
-                <Text
-                  style={{
-                    fontSize: RFPercentage(3.5),
-                    color: colors.ColorWhite(),
-                    fontWeight: "bold",
-                  }}
-                >
-                  Rp 20000
-                </Text>
-                <Ionicons
-                  name="caret-forward-outline"
-                  color={colors.ColorWhite()}
-                  size={RFPercentage(5)}
-                />
-              </View>
-            </TouchableOpacity>
+            {/* button promo dan checkout*/}
+            <View style={{ marginBottom: RFPercentage(2) }}>
+              <ButtonGunakanPromo />
+              {Btn.Btn("CHECKOUT", RFPercentage(0.5), () => {
+                alert("cekout");
+              })}
+            </View>
           </View>
         </View>
       </KeyboardAwareScrollView>

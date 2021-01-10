@@ -4,18 +4,16 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 //color
 import colors from "../colors/colors";
 
-const CustomLabelInput = (props) => {
-  const { text } = props;
+const TextHarga = (props) => {
+  const { text, color } = props;
 
   return (
     <View>
       <Text
         style={{
-          fontWeight: "normal",
-          color: colors.ColorBlack(),
-          fontSize: RFPercentage(2.2),
-          fontWeight: "600",
-          marginBottom: RFPercentage(1),
+          color: color,
+          fontSize: RFPercentage(2.5),
+          fontWeight: "bold",
         }}
       >
         {text}
@@ -24,4 +22,4 @@ const CustomLabelInput = (props) => {
   );
 };
 
-export default CustomLabelInput;
+export default TextHarga;
