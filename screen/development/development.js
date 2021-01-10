@@ -20,6 +20,7 @@ class development extends Component {
         "Keranjang",
         "Profile",
         "Order",
+        "Pembayaran",
       ],
     };
   }

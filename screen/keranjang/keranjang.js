@@ -33,7 +33,8 @@ class keranjang extends Component {
       area: "tegal",
       alamat: "",
       ongkir: "5000",
-      total: "20000",
+      subtotal: "150000",
+      total: "155000",
     };
   }
 
@@ -179,11 +180,7 @@ class keranjang extends Component {
                 </Pressable>
               </View>
             </View>
-            <View
-              style={{
-                marginBottom: RFPercentage(2),
-              }}
-            >
+            <View style={{}}>
               <View style={{ marginBottom: RFPercentage(1) }}>
                 <View style={{ flexDirection: "row" }}>
                   <LabelText text="Biaya Kurir" />
@@ -195,6 +192,18 @@ class keranjang extends Component {
                   />
                   <TextHarga
                     text={"Rp " + this.state.ongkir}
+                    color={colors.ColorSecondary()}
+                  />
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                  }}
+                >
+                  <LabelText text="Subtotal Layanan" />
+                  <TextHarga
+                    text={"Rp " + this.state.subtotal}
                     color={colors.ColorSecondary()}
                   />
                 </View>

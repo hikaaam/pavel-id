@@ -12,6 +12,7 @@ import ScreenFeed from "../screen/feed/feed";
 import ScreenDevelopment from "../screen/development/development";
 import ScreenLogin from "../screen/Login/Login";
 import ScreenRegister from "../screen/Login/Register";
+import ScreenPembayaran from "../screen/keranjang/Pembayaran";
 
 //Colors
 import Colors from "../colors/colors";
@@ -101,6 +102,19 @@ class stackNavigator {
             },
           }}
           component={ScreenOrder}
+        />
+
+        <Stack.Screen
+          name="Pembayaran"
+          options={{
+            headerStyle: {
+              backgroundColor: Colors.ColorPrimary(),
+            },
+            headerTitleStyle: {
+              color: Colors.ColorWhite(),
+            },
+          }}
+          component={ScreenPembayaran}
         />
 
         <Stack.Screen
