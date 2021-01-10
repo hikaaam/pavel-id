@@ -52,7 +52,7 @@ const CardViewPembayaran = (props) => {
           padding: RFPercentage(2),
           borderBottomLeftRadius: 10,
           borderBottomRightRadius: 10,
-          elevation: 4,
+          elevation: 10,
         }}
       >
         <View

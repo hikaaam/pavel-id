@@ -34,7 +34,7 @@ const CardViewPilihanBank = (props) => {
             flex: 1,
             height: undefined,
             width: undefined,
-            resizeMode: "cover",
+            resizeMode: "contain",
             borderRadius: 8,
           }}
         />
