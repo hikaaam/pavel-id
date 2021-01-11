@@ -33,14 +33,18 @@ import Back from "../../components/backToDevelopment";
 //import style
 import s from './StyleLogin';
 
+//import Setting
+import url from '../../setting/link';
+
+import db from '../../database/DB';
 // todo : pasang fonts
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email:"",
-      password:""
+      email: "",
+      password: ""
     };
   }
 
@@ -113,7 +117,7 @@ class Login extends Component {
             </TouchableOpacity>
             {/* btn masuk */}
             {ButtonBiru.Btn("MASUK", 30, () => {
-              Alert.alert("masuk email");
+              this.login()
             })}
             <Text style={s.LoginTextAtau} >
               Atau
@@ -141,6 +145,32 @@ class Login extends Component {
         </View>
       </KeyboardAwareScrollView>
     );
+  }
+  login() {
+    let email = this.state.email;
+    let password = this.state.password;
+    console.log(url.link() + "user")
+    fetch(url.link() + "user", {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password
+      })
+    }).then((res) => res.json()).then((response) => {
+      if (response.status == "ok") {
+        //  db.createData("user",response.data)
+        return(Alert.alert("Berhasil",response.data[0].nama))
+      } else {
+        return(Alert.alert("Gagal",response.msg))
+      }
+      console.log(response);
+    }).catch((e) => {
+      console.log(e)
+    })
   }
 }
 

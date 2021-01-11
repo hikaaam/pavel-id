@@ -21,6 +21,7 @@ class development extends Component {
         "Profile",
         "Order",
         "Pembayaran",
+        "Chat"
       ],
     };
   }

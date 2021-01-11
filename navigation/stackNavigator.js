@@ -13,6 +13,7 @@ import ScreenDevelopment from "../screen/development/development";
 import ScreenLogin from "../screen/Login/Login";
 import ScreenRegister from "../screen/Login/Register";
 import ScreenPembayaran from "../screen/keranjang/Pembayaran";
+import ScreenChat from '../screen/chat/chat';
 
 //Colors
 import Colors from "../colors/colors";
@@ -151,6 +152,19 @@ class stackNavigator {
           }}
           component={ScreenRegister}
         />
+        <Stack.Screen
+          name="Chat"
+          options={{
+            headerStyle: {
+              backgroundColor: Colors.ColorPrimary(),
+            },
+            headerTitleStyle: {
+              color: Colors.ColorWhite(),
+            },
+          }}
+          component={ScreenChat}
+        />
+
       </Stack.Navigator>
     );
   };
