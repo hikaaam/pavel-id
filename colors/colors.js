@@ -48,6 +48,9 @@ class colors extends Component {
   ColorYellow() {
     return "#F2C946";
   }
+  ColorGreen() {
+    return "#27AE60";
+  }
 }
 
 const warna = new colors();

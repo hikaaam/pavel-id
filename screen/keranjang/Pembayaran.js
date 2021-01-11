@@ -11,6 +11,7 @@ import TextHarga from "../../components/TextHarga";
 import CardViewPembayaran from "../../components/CardViewPembayaran";
 import CardViewBank from "../../components/CardViewPilihanBank";
 import DetailRekening from "../../components/DetailRekening";
+import StatusPembayaran from "../../components/StatusPembayaran";
 
 //color
 import colors from "../../colors/colors";
@@ -19,8 +20,10 @@ class Pembayaran extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      status: "Menunggu Pembayaran",
-      rekening: "bca",
+      // status sementara ada 3 : menunggu , diproses, dibatalkan
+      status: "menunggu",
+      // pilihan rekening sementara ada 3 : bca , bri , mandiri
+      rekening: "mandiri",
       ongkir: "5000",
       subtotal: "150000",
       total: "155000",
@@ -28,7 +31,6 @@ class Pembayaran extends Component {
   }
 
   render() {
-    let imagePath = "../../assets/icons/" + this.state.rekening + ".png";
     return (
       <KeyboardAwareScrollView
         style={{ backgroundColor: colors.ColorBackground() }}
@@ -41,18 +43,7 @@ class Pembayaran extends Component {
         >
           {/* status */}
           <View style={{ marginBottom: RFPercentage(2) }}>
-            <LabelText text="Status Tagihan" grayed={true} />
-            <Text
-              style={{
-                backgroundColor: colors.ColorYellow(),
-                borderRadius: 20,
-                padding: RFPercentage(1.5),
-                textAlign: "center",
-                width: "50%",
-              }}
-            >
-              {this.state.status}
-            </Text>
+            <StatusPembayaran status={this.state.status} />
             <Back />
           </View>
           {/* total tagihan */}

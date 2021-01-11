@@ -71,9 +71,10 @@ const DetailRekening = (props) => {
           borderBottomWidth: 1,
           borderColor: colors.ColorGrayFade(),
           paddingBottom: RFPercentage(2),
+          alignItems: "center",
         }}
       >
-        <View style={{ height: RFPercentage(15), width: RFPercentage(25) }}>
+        <View style={{ height: RFPercentage(10), width: RFPercentage(20) }}>
           <Image
             source={imgSource}
             style={{
