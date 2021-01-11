@@ -13,7 +13,8 @@ import ScreenDevelopment from "../screen/development/development";
 import ScreenLogin from "../screen/Login/Login";
 import ScreenRegister from "../screen/Login/Register";
 import ScreenPembayaran from "../screen/keranjang/Pembayaran";
-import ScreenChat from '../screen/chat/chat';
+import ScreenChat from "../screen/chat/chat";
+import ScreenTagihan from "../screen/keranjang/Tagihan";
 
 //Colors
 import Colors from "../colors/colors";
@@ -119,6 +120,19 @@ class stackNavigator {
         />
 
         <Stack.Screen
+          name="Tagihan"
+          options={{
+            headerStyle: {
+              backgroundColor: Colors.ColorPrimary(),
+            },
+            headerTitleStyle: {
+              color: Colors.ColorWhite(),
+            },
+          }}
+          component={ScreenTagihan}
+        />
+
+        <Stack.Screen
           name="Keranjang"
           options={{
             headerStyle: {
@@ -164,7 +178,6 @@ class stackNavigator {
           }}
           component={ScreenChat}
         />
-
       </Stack.Navigator>
     );
   };

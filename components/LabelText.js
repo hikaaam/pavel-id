@@ -5,13 +5,13 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 import colors from "../colors/colors";
 
 const LabelText = (props) => {
-  const { text, fontWeight } = props;
+  const { text, fontWeight, color } = props;
 
   return (
     <View>
       <Text
         style={{
-          color: colors.ColorBlack(),
+          color: color == null ? colors.ColorBlack() : color,
           fontSize: RFPercentage(2.2),
           fontWeight: fontWeight,
           marginBottom: RFPercentage(1),

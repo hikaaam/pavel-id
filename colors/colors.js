@@ -44,6 +44,10 @@ class colors extends Component {
   ColorGrayFade() {
     return "#E0E0E0E0";
   }
+
+  ColorYellow() {
+    return "#F2C946";
+  }
 }
 
 const warna = new colors();
