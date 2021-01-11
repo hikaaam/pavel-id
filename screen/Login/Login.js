@@ -162,12 +162,13 @@ class Login extends Component {
       })
     }).then((res) => res.json()).then((response) => {
       if (response.status == "ok") {
-        //  db.createData("user",response.data)
-        return(Alert.alert("Berhasil",response.data[0].nama))
+         db.createData("user",response.data[0])
+         this.props.navigation.replace('Home');
+        // return(Alert.alert("Berhasil",response.data[0].nama))
       } else {
         return(Alert.alert("Gagal",response.msg))
       }
-      console.log(response);
+      // console.log(response);
     }).catch((e) => {
       console.log(e)
     })

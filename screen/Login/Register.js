@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StatusBar } from "expo";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -12,6 +12,9 @@ import ButtonBiru from "../../components/ButtonBiru";
 
 //color
 import colors from "../../colors/colors";
+
+//setting
+import url from '../../setting/link';
 
 class Register extends Component {
   constructor(props) {
@@ -257,11 +260,54 @@ class Register extends Component {
                 color={colors.ColorSecondary()}
               />
             </TouchableOpacity>
-            {ButtonBiru.Btn("DAFTAR", RFPercentage(3), () => {})}
+            {ButtonBiru.Btn("DAFTAR", RFPercentage(3), () => { 
+              this.register();
+            })}
           </View>
         </View>
       </KeyboardAwareScrollView>
     );
+  }
+  check() {
+    if (this.state.password == this.state.passwordUlang) {
+      return true;
+    }
+
+    return false;
+  }
+  register() {
+    if (this.check()) {
+      let email = this.state.email;
+      let nama = this.state.nama;
+      let password = this.state.password;
+      console.log(url.link() + "user/simpan")
+      fetch(url.link() + "user/simpan", {
+        method: 'POST',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+          nama:nama
+        })
+      }).then((res) => res.json()).then((response) => {
+        if (response.status == "ok") {
+           db.createData("user",response.data)
+           this.props.navigation.replace("Home");
+          // return (Alert.alert("Berhasil", response.data.nama))
+        } else {
+          return (Alert.alert("Gagal", response.msg))
+        }
+        // console.log(response);
+      }).catch((e) => {
+        console.log(e)
+      })
+    }
+    else {
+      Alert.alert("Error", "password tidak cocok")
+    }
   }
 }
 

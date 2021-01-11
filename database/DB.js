@@ -29,11 +29,11 @@ class DB extends Component {
     // }
 
     //use promise or not work
-    getData = async () => {
+    getData = async (key) => {
         try {
-            const value = await AsyncStorage.getItem('@storage_Key')
+            const value = await AsyncStorage.getItem(key)
             if (value !== null) {
-                // value previously stored
+                return value;
             }
         } catch (e) {
             console.log(e)

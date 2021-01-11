@@ -12,10 +12,24 @@ import Promo from "../../components/CardViewPromo";
 //colors
 import colors from "../../colors/colors";
 
+//db
+import db from '../../database/DB';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 class home extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      nama:""
+    };
+  }
+  componentDidMount(){
+    AsyncStorage.getItem('user').then((data)=> JSON.parse(data)).then((data)=>{
+        console.log(data)
+        this.setState({
+          nama:data.nama
+        })
+    })
   }
 
   render() {
@@ -33,7 +47,7 @@ class home extends Component {
           }}
         >
           <Text
-            style={{ color: colors.ColorWhite(), fontSize: RFPercentage(2.6) }}
+            style={{ color: colors.ColorWhite(), fontSize: RFPercentage(2.6), fontWeight:'bold' }}
           >
             Pavel Clean
           </Text>
@@ -91,7 +105,7 @@ class home extends Component {
                 fontWeight: "bold",
               }}
             >
-              Qodim Ibnu Salam!
+              {this.state.nama}!
             </Text>
           </View>
           <View
