@@ -5,7 +5,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { RFPercentage } from "react-native-responsive-fontsize";
 
 //CustomComponents
-import CompenentHeader from "../../components/header";
+import CompenentHeader from "../../components/Header";
 import Back from "../../components/backToDevelopment";
 import Promo from "../../components/CardViewPromo";
 
@@ -16,20 +16,22 @@ import colors from "../../colors/colors";
 import db from '../../database/DB';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+import BtmNav from '../../components/BottomNav';
+
 class home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nama:""
+      nama:"Ilyas abdurahman yusuf "
     };
   }
   componentDidMount(){
-    AsyncStorage.getItem('user').then((data)=> JSON.parse(data)).then((data)=>{
-        console.log(data)
-        this.setState({
-          nama:data.nama
-        })
-    })
+    // AsyncStorage.getItem('user').then((data)=> JSON.parse(data)).then((data)=>{
+    //     console.log(data)
+    //     this.setState({
+    //       nama:data.nama
+    //     })
+    // })
   }
 
   render() {
@@ -52,7 +54,9 @@ class home extends Component {
             Pavel Clean
           </Text>
           <View style={{ right: RFPercentage(5) }}>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>{
+              this.props.navigation.navigate('Keranjang')
+            }}>
               <Ionicons
                 color={colors.ColorWhite()}
                 name="ios-cart-outline"
@@ -262,7 +266,9 @@ class home extends Component {
                 () => {}
               )}
             </ScrollView>
+
           </View>
+          <BtmNav />
         </View>
       </ScrollView>
     );

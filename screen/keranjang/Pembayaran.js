@@ -79,11 +79,13 @@ class Pembayaran extends Component {
           </View>
           <LabelText text="Jika sudah melakukan transfer harap segera kirim bukti transfer" />
           {Btn.Btn("KIRIM BUKTI TRANSFER", RFPercentage(4), () => {
-            alert("Membuka modal kirim gambar");
+            // this.props.navigation.navigate('Pembayaran')
+            alert('pembayaran berhasil')
           })}
           <TouchableOpacity
             onPress={() => {
-              alert("Membatalkan Pesanan");
+              // alert("Membatalkan Pesanan");
+              this.props.navigation.replace('Home');
             }}
             style={{
               justifyContent: "center",

@@ -117,7 +117,8 @@ class Login extends Component {
             </TouchableOpacity>
             {/* btn masuk */}
             {ButtonBiru.Btn("MASUK", 30, () => {
-              this.login()
+              // this.login()
+              this.props.navigation.replace('BottomNav')
             })}
             <Text style={s.LoginTextAtau} >
               Atau
@@ -135,7 +136,9 @@ class Login extends Component {
             <Text style={s.LoginTextBelumPunyaAkun}>
               Belum punya akun?
               </Text>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>{
+              this.props.navigation.navigate('Register')
+            }}>
               <Text
                 style={s.LoginTextDaftar} >
                 Daftar
@@ -163,7 +166,7 @@ class Login extends Component {
     }).then((res) => res.json()).then((response) => {
       if (response.status == "ok") {
          db.createData("user",response.data[0])
-         this.props.navigation.replace('Home');
+         this.props.navigation.replace('BottomNav');
         // return(Alert.alert("Berhasil",response.data[0].nama))
       } else {
         return(Alert.alert("Gagal",response.msg))

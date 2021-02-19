@@ -66,7 +66,7 @@ class Tagihan extends Component {
             />
           </View>
           {Btn.Btn("PILIH", RFPercentage(0.5), () => {
-            alert("cekout");
+            this.props.navigation.navigate('Pembayaran')
           })}
         </View>
       </KeyboardAwareScrollView>

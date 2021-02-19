@@ -228,7 +228,7 @@ class keranjang extends Component {
             <View style={{ marginBottom: RFPercentage(2) }}>
               <ButtonGunakanPromo />
               {Btn.Btn("CHECKOUT", RFPercentage(0.5), () => {
-                alert("cekout");
+                this.props.navigation.navigate('Tagihan')
               })}
             </View>
           </View>

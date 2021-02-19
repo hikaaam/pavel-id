@@ -4,95 +4,40 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Ionicons from "react-native-vector-icons/Ionicons";
 
 //import screen
-import ScreenHome from "../screen/home/home/";
-import ScreenKeranjang from "../screen/keranjang/keranjang";
-import ScreenOrder from "../screen/order/order";
-import ScreenProfile from "../screen/profile/profile";
-import ScreenFeed from "../screen/feed/feed";
 import ScreenDevelopment from "../screen/development/development";
-import ScreenLogin from "../screen/Login/Login";
-import ScreenRegister from "../screen/Login/Register";
-import ScreenPembayaran from "../screen/keranjang/Pembayaran";
-import ScreenChat from "../screen/chat/chat";
-import ScreenTagihan from "../screen/keranjang/Tagihan";
+import {
+  Home,
+  Chat,
+  Feed,
+  Keranjang,
+  Login,
+  Order,
+  Pembayaran,
+  Profile,
+  Tagihan,
+  Register
+} from '../screen';
 
 //Colors
 import Colors from "../colors/colors";
 import { RFPercentage } from "react-native-responsive-fontsize";
-
+import bottomNav from './bottomNavigator';
 const Stack = createStackNavigator();
 
 class stackNavigator {
   Navigator = () => {
     return (
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Login">
         <Stack.Screen
           name="Development"
           options={{}}
           component={ScreenDevelopment}
         />
 
-        <Stack.Screen
-          name="Home"
-          options={{
-            headerShown: null,
-            headerTitleStyle: Style.HeaderBiruTitleNavigation,
-            title: "Pavel Clean",
-            headerRight: () => {
-              return (
-                <TouchableOpacity
-                  style={{
-                    width: RFPercentage(8),
-                    // justifyContent:'flex-end',
-                    alignItems: "flex-end",
-                  }}
-                  onPress={() => {
-                    alert("Cart");
-                  }}
-                >
-                  <View
-                    style={{
-                      height: RFPercentage(5),
-                      width: RFPercentage(5),
-                      marginRight: RFPercentage(2),
-                      backgroundColor: Colors.ColorWhite(),
-                      justifyContent: "center",
-                      alignItems: "center",
-                      borderRadius: 100,
-                    }}
-                  >
-                    <Ionicons name="ios-cart-outline" size={RFPercentage(4)} />
-                  </View>
-                  <View
-                    style={{
-                      position: "absolute",
-                      top: RFPercentage(2.7),
-                      left: 0,
-                      backgroundColor: Colors.ColorRed(),
-                      width: RFPercentage(3.5),
-                      height: RFPercentage(3.5),
-                      borderRadius: 100,
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Text
-                      style={{
-                        fontSize: RFPercentage(2.5),
-                        fontWeight: "bold",
-                        color: Colors.ColorWhite(),
-                      }}
-                    >
-                      1
-                    </Text>
-                  </View>
-                </TouchableOpacity>
-              );
-            },
-          }}
-          component={ScreenHome}
-        />
-
+        <Stack.Screen name="BottomNav" component={bottomNav} options={{
+          headerShown:false
+        }}/>
+      
         <Stack.Screen
           name="Order"
           options={{
@@ -103,7 +48,7 @@ class stackNavigator {
               color: Colors.ColorWhite(),
             },
           }}
-          component={ScreenOrder}
+          component={Order}
         />
 
         <Stack.Screen
@@ -116,7 +61,7 @@ class stackNavigator {
               color: Colors.ColorWhite(),
             },
           }}
-          component={ScreenPembayaran}
+          component={Pembayaran}
         />
 
         <Stack.Screen
@@ -129,7 +74,7 @@ class stackNavigator {
               color: Colors.ColorWhite(),
             },
           }}
-          component={ScreenTagihan}
+          component={Tagihan}
         />
 
         <Stack.Screen
@@ -142,19 +87,16 @@ class stackNavigator {
               color: Colors.ColorWhite(),
             },
           }}
-          component={ScreenKeranjang}
+          component={Keranjang}
         />
 
-        <Stack.Screen name="Profile" options={{}} component={ScreenProfile} />
-
-        <Stack.Screen name="Feed" options={{}} component={ScreenFeed} />
 
         <Stack.Screen
           name="Login"
           options={{
             headerShown: null,
           }}
-          component={ScreenLogin}
+          component={Login}
         />
 
         <Stack.Screen
@@ -164,7 +106,7 @@ class stackNavigator {
             headerTitleStyle: Style.HeaderBiruTitleNavigation,
             title: null,
           }}
-          component={ScreenRegister}
+          component={Register}
         />
         <Stack.Screen
           name="Chat"
@@ -176,7 +118,7 @@ class stackNavigator {
               color: Colors.ColorWhite(),
             },
           }}
-          component={ScreenChat}
+          component={Chat}
         />
       </Stack.Navigator>
     );
