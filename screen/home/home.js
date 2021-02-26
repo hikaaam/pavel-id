@@ -39,7 +39,11 @@ class home extends Component {
 
   render() {
     return (
-      <ScrollView style={{ backgroundColor: colors.ColorBackground() }}>
+      <ScrollView
+        bounces={false}
+        showsVerticalScrollIndicator={false}
+        style={{ backgroundColor: colors.ColorBackground() }}
+      >
         <ComponentHeader />
         {/* header */}
         <View
