@@ -1,31 +1,33 @@
 import React, { Component } from "react";
-import { View, Text, TouchableOpacity, ScrollView } from "react-native";
+import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
 import { StatusBar } from "expo";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { RFPercentage } from "react-native-responsive-fontsize";
 
 //CustomComponents
-import CompenentHeader from "../../components/Header";
+import ComponentHeader from "../../components/header";
+// import CompenentHeader from "../../components/Header";
 import Back from "../../components/backToDevelopment";
 import Promo from "../../components/CardViewPromo";
+import LayananIcon from "../../components/LayananIcon";
 
 //colors
 import colors from "../../colors/colors";
 
 //db
-import db from '../../database/DB';
+import db from "../../database/DB";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import BtmNav from '../../components/BottomNav';
+import BtmNav from "../../components/BottomNav";
 
 class home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nama:"Ilyas abdurahman yusuf "
+      nama: "Ilyas abdurahman yusuf ",
     };
   }
-  componentDidMount(){
+  componentDidMount() {
     // AsyncStorage.getItem('user').then((data)=> JSON.parse(data)).then((data)=>{
     //     console.log(data)
     //     this.setState({
@@ -37,7 +39,7 @@ class home extends Component {
   render() {
     return (
       <ScrollView style={{ backgroundColor: colors.ColorBackground() }}>
-        <CompenentHeader />
+        <ComponentHeader />
         {/* header */}
         <View
           style={{
@@ -49,14 +51,20 @@ class home extends Component {
           }}
         >
           <Text
-            style={{ color: colors.ColorWhite(), fontSize: RFPercentage(2.6), fontWeight:'bold' }}
+            style={{
+              color: colors.ColorWhite(),
+              fontSize: RFPercentage(2.6),
+              fontWeight: "bold",
+            }}
           >
             Pavel Clean
           </Text>
           <View style={{ right: RFPercentage(5) }}>
-            <TouchableOpacity onPress={()=>{
-              this.props.navigation.navigate('Keranjang')
-            }}>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate("Keranjang");
+              }}
+            >
               <Ionicons
                 color={colors.ColorWhite()}
                 name="ios-cart-outline"
@@ -155,30 +163,18 @@ class home extends Component {
                   marginBottom: RFPercentage(3),
                 }}
               >
-                {this.renderLayananIcon(
-                  "flash-outline",
-                  "#ffce47",
-                  "Fast Clean",
-                  () => {
-                    alert("Fast Clean");
-                  }
-                )}
-                {this.renderLayananIcon(
-                  "ios-medical",
-                  colors.ColorRed(),
-                  "Deep Clean",
-                  () => {
-                    alert("Deep Clean");
-                  }
-                )}
-                {this.renderLayananIcon(
-                  "repeat-outline",
-                  "#d59d01",
-                  "Unyellowing",
-                  () => {
-                    alert("Unyellowing");
-                  }
-                )}
+                <LayananIcon
+                  IconName={require("../../assets/icons/1_fast_clean.png")}
+                  text="Fast Clean"
+                />
+                <LayananIcon
+                  IconName={require("../../assets/icons/2_deep_clean.png")}
+                  text="Deep Clean"
+                />
+                <LayananIcon
+                  IconName={require("../../assets/icons/3_unyellowing.png")}
+                  text="Unyellowing"
+                />
               </View>
               <View
                 style={{
@@ -186,36 +182,24 @@ class home extends Component {
                   justifyContent: "space-between",
                 }}
               >
-                {this.renderLayananIcon(
-                  "bandage-outline",
-                  "#9a895b",
-                  "Leather Treatment",
-                  () => {
-                    alert("Leather Treatment");
-                  }
-                )}
-                {this.renderLayananIcon(
-                  "brush-outline",
-                  "#0dbf28",
-                  "Pengeleman Ulang",
-                  () => {
-                    alert("Pengeleman Ulang");
-                  }
-                )}
-                {this.renderLayananIcon(
-                  "color-palette-outline",
-                  "#198cf0",
-                  "Repaint",
-                  () => {
-                    alert("Repaint");
-                  }
-                )}
+                <LayananIcon
+                  IconName={require("../../assets/icons/4_leather_treatment.png")}
+                  text="Leather Treatment"
+                />
+                <LayananIcon
+                  IconName={require("../../assets/icons/5_pengeleman.png")}
+                  text="Pengeleman Ulang"
+                />
+                <LayananIcon
+                  IconName={require("../../assets/icons/6_repaint.png")}
+                  text="Repaint"
+                />
               </View>
             </View>
           </View>
           <View
             style={{
-              marginTop: RFPercentage(2),
+              marginVertical: RFPercentage(2),
             }}
           >
             <Text
@@ -266,66 +250,10 @@ class home extends Component {
                 () => {}
               )}
             </ScrollView>
-
           </View>
           <BtmNav />
         </View>
       </ScrollView>
-    );
-  }
-  renderLayananIcon(IconName, IconColor, text, Funct) {
-    return (
-      <View>
-        <TouchableOpacity
-          style={{
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-          activeOpacity={0.5}
-          onPress={() => {
-            Funct();
-          }}
-        >
-          <View
-            style={{
-              justifyContent: "center",
-              alignItems: "center",
-              width: RFPercentage(9.5),
-              height: RFPercentage(9.5),
-              borderWidth: 1,
-              borderColor: colors.ColorBorder(),
-              borderRadius: 100,
-              backgroundColor: colors.ColorBackground(),
-            }}
-          >
-            <Ionicons
-              name={IconName}
-              color={IconColor}
-              size={RFPercentage(8)}
-            />
-          </View>
-
-          <View
-            style={{
-              width: RFPercentage(12),
-              justifyContent: "center",
-              alignItems: "center",
-              top: RFPercentage(0.7),
-            }}
-          >
-            <Text
-              style={{
-                fontWeight: "normal",
-                fontSize: RFPercentage(2),
-                color: colors.ColorGraySecondary(),
-                textAlign: "center",
-              }}
-            >
-              {text}
-            </Text>
-          </View>
-        </TouchableOpacity>
-      </View>
     );
   }
 }
