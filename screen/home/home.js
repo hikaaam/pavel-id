@@ -10,6 +10,7 @@ import ComponentHeader from "../../components/header";
 import Back from "../../components/backToDevelopment";
 import Promo from "../../components/CardViewPromo";
 import LayananIcon from "../../components/LayananIcon";
+import PromoCard from "../../components/CardViewPromo";
 
 //colors
 import colors from "../../colors/colors";
@@ -166,6 +167,9 @@ class home extends Component {
                 <LayananIcon
                   IconName={require("../../assets/icons/1_fast_clean.png")}
                   text="Fast Clean"
+                  onPress={() => {
+                    alert("Fast Clean");
+                  }}
                 />
                 <LayananIcon
                   IconName={require("../../assets/icons/2_deep_clean.png")}
@@ -197,6 +201,7 @@ class home extends Component {
               </View>
             </View>
           </View>
+          {/* promo section */}
           <View
             style={{
               marginVertical: RFPercentage(2),
@@ -225,30 +230,27 @@ class home extends Component {
               showsHorizontalScrollIndicator={false}
               style={{ marginTop: RFPercentage(2) }}
             >
-              {Promo.Promo(
-                "https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1",
-                "Fast Clean + Unyellowing",
-                false,
-                () => {}
-              )}
-              {Promo.Promo(
-                "https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1",
-                "Fast Clean + Unyellowing",
-                true,
-                () => {}
-              )}
-              {Promo.Promo(
-                "https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1",
-                "Fast Clean + Unyellowing",
-                true,
-                () => {}
-              )}
-              {Promo.Promo(
-                "https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1",
-                "Fast Clean + Unyellowing",
-                true,
-                () => {}
-              )}
+              <PromoCard
+                first
+                image="https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1"
+                text="Fast Clean + Unyellowing"
+                onPress={() => {}}
+              />
+              <PromoCard
+                image="https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1"
+                text="Fast Clean + Unyellowing"
+                onPress={() => {}}
+              />
+              <PromoCard
+                image="https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1"
+                text="Fast Clean + Unyellowing"
+                onPress={() => {}}
+              />
+              <PromoCard
+                image="https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1"
+                text="Fast Clean + Unyellowing"
+                onPress={() => {}}
+              />
             </ScrollView>
           </View>
           <BtmNav />

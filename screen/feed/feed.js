@@ -10,6 +10,7 @@ import Colors from "../../colors/colors";
 import { TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
 import Promo from "../../components/CardViewPromo";
+
 class feed extends Component {
   constructor(props) {
     super(props);
@@ -97,222 +98,224 @@ class feed extends Component {
             Ilyas abdurahman yusuf
           </Text>
         </View>
-        <ScrollView
+        <View
           style={{
             flex: 1,
-            position: "relative",
-            top: -RFPercentage(5),
-            borderRadius: 30,
-            height: "100%",
+            position: "absolute",
+            top: RFPercentage(27.5),
+            height: "70%",
             backgroundColor: Colors.ColorBackground(),
+            borderRadius: 20,
           }}
         >
-          <View
+          <ScrollView
+            showsVerticalScrollIndicator={false}
             style={{
+              flex: 1,
               marginTop: RFPercentage(2),
-              paddingHorizontal: RFPercentage(2),
             }}
           >
-            <Text
+            <View
               style={{
-                fontSize: RFPercentage(3),
-                fontWeight: "bold",
-                color: Colors.ColorBlack(),
+                marginTop: RFPercentage(2),
+                paddingHorizontal: RFPercentage(2),
               }}
             >
-              Promo Anda{" "}
-            </Text>
-            <Text
+              <Text
+                style={{
+                  fontSize: RFPercentage(3),
+                  fontWeight: "bold",
+                  color: Colors.ColorBlack(),
+                }}
+              >
+                Promo Anda
+              </Text>
+              <Text
+                style={{
+                  fontSize: RFPercentage(2.2),
+                  color: Colors.ColorGraySecondary(),
+                  fontWeight: "normal",
+                }}
+              >
+                Nikmati promo dengan harga terbaik
+              </Text>
+              <ScrollView
+                horizontal={true}
+                showsHorizontalScrollIndicator={false}
+                style={{ marginVertical: RFPercentage(2) }}
+              >
+                <Promo
+                  first
+                  image="https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1"
+                  text="Fast Clean + Unyellowing"
+                />
+                <Promo
+                  image="https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1"
+                  text="Fast Clean + Unyellowing"
+                />
+                <Promo
+                  image="https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1"
+                  text="Fast Clean + Unyellowing"
+                />
+                <Promo
+                  image="https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1"
+                  text="Fast Clean + Unyellowing"
+                />
+              </ScrollView>
+            </View>
+            <View
               style={{
-                fontSize: RFPercentage(2.2),
-                color: Colors.ColorGraySecondary(),
-                fontWeight: "normal",
+                paddingHorizontal: RFPercentage(2),
+                margintop: RFPercentage(1),
+                marginBottom: RFPercentage(3),
               }}
             >
-              Nikmati promo dengan harga terbaik
-            </Text>
-            <ScrollView
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              style={{ marginTop: RFPercentage(2) }}
-            >
-              {Promo.Promo(
-                "https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1",
-                "Fast Clean + Unyellowing",
-                false,
-                () => {}
-              )}
-              {Promo.Promo(
-                "https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1",
-                "Fast Clean + Unyellowing",
-                true,
-                () => {}
-              )}
-              {Promo.Promo(
-                "https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1",
-                "Fast Clean + Unyellowing",
-                true,
-                () => {}
-              )}
-              {Promo.Promo(
-                "https://i2.wp.com/etalaseserpong.com/wp-content/uploads/2019/08/090819-ilustrasi-promo.jpg?resize=696%2C502&ssl=1",
-                "Fast Clean + Unyellowing",
-                true,
-                () => {}
-              )}
-            </ScrollView>
-          </View>
-          <View
-            style={{
-              paddingHorizontal: RFPercentage(2),
-              margintop: RFPercentage(1),
-            }}
-          >
-            <Text
-              style={{
-                fontSize: RFPercentage(3),
-                fontWeight: "bold",
-                color: Colors.ColorBlack(),
-              }}
-            >
-              Pengaturan
-            </Text>
+              <Text
+                style={{
+                  fontSize: RFPercentage(3),
+                  fontWeight: "bold",
+                  color: Colors.ColorBlack(),
+                }}
+              >
+                Pengaturan
+              </Text>
 
-            <TouchableOpacity
-              style={{
-                width: "100%",
-                flexDirection: "row",
-                paddingVertical: RFPercentage(2),
-                marginTop: RFPercentage(2),
-              }}
-            >
-              <View
+              <TouchableOpacity
                 style={{
-                  borderColor: "#808080aa",
-                  borderWidth: 1,
-                  paddingVertical: RFPercentage(1),
-                  borderRadius: 20,
-                  width: RFPercentage(8),
-                  alignItems: "center",
-                  marginRight: RFPercentage(3),
+                  width: "100%",
+                  flexDirection: "row",
+                  paddingVertical: RFPercentage(2),
+                  marginTop: RFPercentage(2),
                 }}
               >
+                <View
+                  style={{
+                    borderColor: "#808080aa",
+                    borderWidth: 1,
+                    paddingVertical: RFPercentage(1),
+                    borderRadius: 20,
+                    width: RFPercentage(8),
+                    alignItems: "center",
+                    marginRight: RFPercentage(3),
+                  }}
+                >
+                  <Icon
+                    name="receipt"
+                    size={RFPercentage(3)}
+                    color={Colors.ColorBlack()}
+                  />
+                </View>
+                <Text
+                  style={{
+                    color: Colors.ColorBlack(),
+                    fontSize: RFPercentage(3.5),
+                  }}
+                >
+                  Pesanan
+                </Text>
                 <Icon
-                  name="receipt"
-                  size={RFPercentage(3)}
+                  style={{
+                    position: "absolute",
+                    right: 0,
+                    top: RFPercentage(2),
+                  }}
+                  name="chevron-right"
+                  size={RFPercentage(5)}
                   color={Colors.ColorBlack()}
                 />
-              </View>
-              <Text
-                style={{
-                  color: Colors.ColorBlack(),
-                  fontSize: RFPercentage(3.5),
-                }}
-              >
-                Pesanan
-              </Text>
-              <Icon
-                style={{
-                  position: "absolute",
-                  right: 0,
-                  top: RFPercentage(2),
-                }}
-                name="chevron-right"
-                size={RFPercentage(5)}
-                color={Colors.ColorBlack()}
-              />
-            </TouchableOpacity>
+              </TouchableOpacity>
 
-            <TouchableOpacity
-              style={{
-                width: "100%",
-                flexDirection: "row",
-                paddingVertical: RFPercentage(2),
-                marginTop: RFPercentage(2),
-              }}
-            >
-              <View
+              <TouchableOpacity
                 style={{
-                  borderColor: "#808080aa",
-                  borderWidth: 1,
-                  paddingVertical: RFPercentage(1),
-                  borderRadius: 20,
-                  width: RFPercentage(8),
-                  alignItems: "center",
-                  marginRight: RFPercentage(3),
+                  width: "100%",
+                  flexDirection: "row",
+                  paddingVertical: RFPercentage(2),
+                  marginTop: RFPercentage(2),
                 }}
               >
+                <View
+                  style={{
+                    borderColor: "#808080aa",
+                    borderWidth: 1,
+                    paddingVertical: RFPercentage(1),
+                    borderRadius: 20,
+                    width: RFPercentage(8),
+                    alignItems: "center",
+                    marginRight: RFPercentage(3),
+                  }}
+                >
+                  <Icon
+                    name="receipt"
+                    size={RFPercentage(3)}
+                    color={Colors.ColorBlack()}
+                  />
+                </View>
+                <Text
+                  style={{
+                    color: Colors.ColorBlack(),
+                    fontSize: RFPercentage(3.5),
+                  }}
+                >
+                  Pesanan
+                </Text>
                 <Icon
-                  name="receipt"
-                  size={RFPercentage(3)}
+                  style={{
+                    position: "absolute",
+                    right: 0,
+                    top: RFPercentage(2),
+                  }}
+                  name="chevron-right"
+                  size={RFPercentage(5)}
                   color={Colors.ColorBlack()}
                 />
-              </View>
-              <Text
+              </TouchableOpacity>
+              <TouchableOpacity
                 style={{
-                  color: Colors.ColorBlack(),
-                  fontSize: RFPercentage(3.5),
+                  width: "100%",
+                  flexDirection: "row",
+                  paddingVertical: RFPercentage(2),
+                  marginTop: RFPercentage(2),
                 }}
               >
-                Pesanan
-              </Text>
-              <Icon
-                style={{
-                  position: "absolute",
-                  right: 0,
-                  top: RFPercentage(2),
-                }}
-                name="chevron-right"
-                size={RFPercentage(5)}
-                color={Colors.ColorBlack()}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity
-              style={{
-                width: "100%",
-                flexDirection: "row",
-                paddingVertical: RFPercentage(2),
-                marginTop: RFPercentage(2),
-              }}
-            >
-              <View
-                style={{
-                  borderColor: "#808080aa",
-                  borderWidth: 1,
-                  paddingVertical: RFPercentage(1),
-                  borderRadius: 20,
-                  width: RFPercentage(8),
-                  alignItems: "center",
-                  marginRight: RFPercentage(3),
-                }}
-              >
+                <View
+                  style={{
+                    borderColor: "#808080aa",
+                    borderWidth: 1,
+                    paddingVertical: RFPercentage(1),
+                    borderRadius: 20,
+                    width: RFPercentage(8),
+                    alignItems: "center",
+                    marginRight: RFPercentage(3),
+                  }}
+                >
+                  <Icon
+                    name="receipt"
+                    size={RFPercentage(3)}
+                    color={Colors.ColorBlack()}
+                  />
+                </View>
+                <Text
+                  style={{
+                    color: Colors.ColorBlack(),
+                    fontSize: RFPercentage(3.5),
+                  }}
+                >
+                  Pesanan
+                </Text>
                 <Icon
-                  name="receipt"
-                  size={RFPercentage(3)}
+                  style={{
+                    position: "absolute",
+                    right: 0,
+                    top: RFPercentage(2),
+                  }}
+                  name="chevron-right"
+                  size={RFPercentage(5)}
                   color={Colors.ColorBlack()}
                 />
-              </View>
-              <Text
-                style={{
-                  color: Colors.ColorBlack(),
-                  fontSize: RFPercentage(3.5),
-                }}
-              >
-                Pesanan
-              </Text>
-              <Icon
-                style={{
-                  position: "absolute",
-                  right: 0,
-                  top: RFPercentage(2),
-                }}
-                name="chevron-right"
-                size={RFPercentage(5)}
-                color={Colors.ColorBlack()}
-              />
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </View>
       </View>
     );
   }
