@@ -28,17 +28,8 @@ class DB extends Component {
 
     // }
 
-    //use promise or not work
-    getData = async (key) => {
-        try {
-            const value = await AsyncStorage.getItem(key)
-            if (value !== null) {
-                return value;
-            }
-        } catch (e) {
-            console.log(e)
-        }
-    }
+    
+
 
     removeData = async (key) =>{
         AsyncStorage.removeItem(key)

@@ -5,7 +5,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { RFPercentage } from "react-native-responsive-fontsize";
 
 //CustomComponents
-import ComponentHeader from "../../components/header";
+import ComponentHeader from "../../components/Header";
 // import CompenentHeader from "../../components/Header";
 import Back from "../../components/backToDevelopment";
 import Promo from "../../components/CardViewPromo";
@@ -153,7 +153,7 @@ class home extends Component {
             >
               Pilih layanan terbaik untuk Anda
             </Text>
-            <Back />
+            {/* <Back /> */}
             <View
               style={{
                 borderTopWidth: 1.5,

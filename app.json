@@ -17,9 +17,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.pavel",
+      "config": {
+        "googleSignIn": {
+          "reservedClientId": "com.googleusercontent.apps.543017744396-u6cilh79a019qbaomlokvf64032ha4rh"
+        }
+      }
     },
     "android": {
+      "package": "com.pavel",
+      "googleServicesFile": "./firebase/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"

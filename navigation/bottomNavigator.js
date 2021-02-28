@@ -23,7 +23,7 @@ const MyTabs = () => {
     return (
         <Tab.Navigator initialRouteName="Home"
             activeColor="#f0edf6"
-            inactiveColor={Colors.ColorGrayPrimary()}
+            inactiveColor={Colors.ColorGrayFade()}
             barStyle={{ backgroundColor: Colors.ColorPrimary() }}>
 
             <Tab.Screen name="Home" component={Home} options={{

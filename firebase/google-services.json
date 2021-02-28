@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "543017744396",
+    "project_id": "pavelid",
+    "storage_bucket": "pavelid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:543017744396:android:97c405dc4571d3a9c41629",
+        "android_client_info": {
+          "package_name": "com.pavel"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "543017744396-n1o29lhla05mrocqt3mu5hdmr3gm22hf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH1N_iN_uEl7ntUbW1qBaUnrXGOAVg4VM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "543017744396-n1o29lhla05mrocqt3mu5hdmr3gm22hf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
