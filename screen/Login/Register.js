@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StatusBar } from "expo";
+import { StatusBar } from "expo-status-bar";
 import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -14,7 +14,8 @@ import ButtonBiru from "../../components/ButtonBiru";
 import colors from "../../colors/colors";
 
 //setting
-import url from '../../setting/link';
+import url from "../../setting/link";
+import db from "../../database/DB";
 
 class Register extends Component {
   constructor(props) {
@@ -28,11 +29,15 @@ class Register extends Component {
   }
 
   render() {
+    const nav = this.props.navigation;
     return (
       <KeyboardAwareScrollView
+        showsVerticalScrollIndicator={false}
+        bounces={false}
         style={{ backgroundColor: colors.ColorBackground() }}
       >
-        <View style={{ flex: 1, paddingTop: RFPercentage(6.5) }}>
+        <View style={{ flex: 1, paddingTop: RFPercentage(9) }}>
+          <StatusBar style="light" />
           <Header />
           {/* tulisan header */}
           <View style={{ alignItems: "center" }}>
@@ -58,8 +63,6 @@ class Register extends Component {
               Silahkan lengkapi form dibawah ini untuk membuat akun baru
             </Text>
           </View>
-          {/* {CardViewPromo.Promo("kielinkfoto","Test",true,()=>{})} */}
-
           {/* form */}
           <View
             style={{
@@ -85,6 +88,9 @@ class Register extends Component {
               </Text>
               <View>
                 <TextInput
+                  ref={(ref) => {
+                    this.Nama = ref;
+                  }}
                   placeholder="Nama"
                   // selectionColor="#cccc"
                   textContentType="name"
@@ -123,14 +129,14 @@ class Register extends Component {
               </Text>
               <View>
                 <TextInput
+                  ref={(ref) => {
+                    this.Email = ref;
+                  }}
                   placeholder="Email"
                   textContentType="emailAddress"
                   autoCapitalize="none"
                   maxLength={255}
                   returnKeyType={"next"}
-                  ref={(input) => {
-                    this.Email = input;
-                  }}
                   onChangeText={(txt) => {
                     this.setState({ email: txt });
                   }}
@@ -239,6 +245,9 @@ class Register extends Component {
             }}
           >
             <TouchableOpacity
+              onPress={() => {
+                nav.goBack();
+              }}
               activeOpacity={0.7}
               style={{
                 backgroundColor: colors.ColorWhite(),
@@ -260,7 +269,7 @@ class Register extends Component {
                 color={colors.ColorSecondary()}
               />
             </TouchableOpacity>
-            {ButtonBiru.Btn("DAFTAR", RFPercentage(3), () => { 
+            {ButtonBiru.Btn("DAFTAR", RFPercentage(3), () => {
               this.register();
             })}
           </View>
@@ -280,33 +289,35 @@ class Register extends Component {
       let email = this.state.email;
       let nama = this.state.nama;
       let password = this.state.password;
-      console.log(url.link() + "user/simpan")
+      console.log(url.link() + "user/simpan");
       fetch(url.link() + "user/simpan", {
-        method: 'POST',
+        method: "POST",
         headers: {
-          Accept: 'application/json',
-          'Content-Type': 'application/json'
+          Accept: "application/json",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           email: email,
           password: password,
-          nama:nama
-        })
-      }).then((res) => res.json()).then((response) => {
-        if (response.status == "ok") {
-           db.createData("user",response.data)
-           this.props.navigation.replace("Home");
-          // return (Alert.alert("Berhasil", response.data.nama))
-        } else {
-          return (Alert.alert("Gagal", response.msg))
-        }
-        // console.log(response);
-      }).catch((e) => {
-        console.log(e)
+          nama: nama,
+        }),
       })
-    }
-    else {
-      Alert.alert("Error", "password tidak cocok")
+        .then((res) => res.json())
+        .then((response) => {
+          if (response.status == "ok") {
+            db.createData("user", response.data);
+            this.props.navigation.replace("RegisterSuccess");
+            // return (Alert.alert("Berhasil", response.data.nama))
+          } else {
+            return Alert.alert("Gagal", response.msg);
+          }
+          // console.log(response);
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+    } else {
+      Alert.alert("Error", "password tidak cocok");
     }
   }
 }

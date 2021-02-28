@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StatusBar } from "expo";
+import { StatusBar } from "expo-status-bar";
 import {
   View,
   Text,

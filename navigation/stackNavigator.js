@@ -15,13 +15,14 @@ import {
   Pembayaran,
   Profile,
   Tagihan,
-  Register
-} from '../screen';
+  Register,
+  RegisterSuccess,
+} from "../screen";
 
 //Colors
 import Colors from "../colors/colors";
 import { RFPercentage } from "react-native-responsive-fontsize";
-import bottomNav from './bottomNavigator';
+import bottomNav from "./bottomNavigator";
 const Stack = createStackNavigator();
 
 class stackNavigator {
@@ -34,10 +35,14 @@ class stackNavigator {
           component={ScreenDevelopment}
         />
 
-        <Stack.Screen name="BottomNav" component={bottomNav} options={{
-          headerShown:false
-        }}/>
-      
+        <Stack.Screen
+          name="BottomNav"
+          component={bottomNav}
+          options={{
+            headerShown: false,
+          }}
+        />
+
         <Stack.Screen
           name="Order"
           options={{
@@ -90,7 +95,6 @@ class stackNavigator {
           component={Keranjang}
         />
 
-
         <Stack.Screen
           name="Login"
           options={{
@@ -108,6 +112,17 @@ class stackNavigator {
           }}
           component={Register}
         />
+
+        <Stack.Screen
+          name="RegisterSuccess"
+          options={{
+            headerShown: null,
+            headerTitleStyle: Style.HeaderBiruTitleNavigation,
+            title: null,
+          }}
+          component={RegisterSuccess}
+        />
+
         <Stack.Screen
           name="Chat"
           options={{

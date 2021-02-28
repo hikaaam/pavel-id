@@ -9,6 +9,7 @@ import Profile from "./profile/profile";
 import Order from "./order/order";
 import Register from "./Login/Register";
 import OrderList from "./order/orderList";
+import RegisterSuccess from "./Login/RegisterSuccess";
 
 export {
   Home,
@@ -22,4 +23,5 @@ export {
   Order,
   Register,
   OrderList,
+  RegisterSuccess,
 };

@@ -12,7 +12,7 @@ const Style = StyleSheet.create({
   //ContainerLogin
   LoginViewContainer: {
     flex: 1,
-    marginTop: RFPercentage(5.5),
+    marginTop: RFPercentage(8),
     justifyContent: "center",
   },
 
