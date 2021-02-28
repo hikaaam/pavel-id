@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { View, Text, TouchableOpacity, ScrollView, Image } from "react-native";
-import { StatusBar } from "expo";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { RFPercentage } from "react-native-responsive-fontsize";
-
+import { StatusBar } from "expo-status-bar";
 //CustomComponents
 import ComponentHeader from "../../components/header";
 // import CompenentHeader from "../../components/Header";
 import Back from "../../components/backToDevelopment";
-import Promo from "../../components/CardViewPromo";
 import LayananIcon from "../../components/LayananIcon";
 import PromoCard from "../../components/CardViewPromo";
 
@@ -45,6 +43,7 @@ class home extends Component {
         style={{ backgroundColor: colors.ColorBackground() }}
       >
         <ComponentHeader />
+        <StatusBar style="light" />
         {/* header */}
         <View
           style={{
@@ -129,14 +128,13 @@ class home extends Component {
             style={{
               padding: RFPercentage(3),
               backgroundColor: colors.ColorWhite(),
-              marginTop: RFPercentage(2.4),
+              marginTop: RFPercentage(2.5),
               borderRadius: 12,
               elevation: 4,
             }}
           >
             <Text
               style={{
-                fontWeight: "bold",
                 fontSize: RFPercentage(3),
                 color: colors.ColorBlack(),
               }}
@@ -145,7 +143,7 @@ class home extends Component {
             </Text>
             <Text
               style={{
-                fontSize: RFPercentage(2.2),
+                fontSize: RFPercentage(2),
                 color: colors.ColorGraySecondary(),
                 fontWeight: "normal",
                 marginBottom: RFPercentage(1),
@@ -209,20 +207,20 @@ class home extends Component {
           <View
             style={{
               marginVertical: RFPercentage(2),
+              marginTop: RFPercentage(4),
             }}
           >
             <Text
               style={{
                 fontSize: RFPercentage(3),
-                fontWeight: "bold",
                 color: colors.ColorBlack(),
               }}
             >
-              Promo{" "}
+              Promo
             </Text>
             <Text
               style={{
-                fontSize: RFPercentage(2.2),
+                fontSize: RFPercentage(2),
                 color: colors.ColorGraySecondary(),
                 fontWeight: "normal",
               }}

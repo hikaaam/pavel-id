@@ -15,7 +15,7 @@ class development extends Component {
       screen: [
         "Home",
         "Login",
-        "Register",
+        "RegisterSuccess",
         "Feed",
         "Keranjang",
         "Profile",
