@@ -5,7 +5,7 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 // import {StatusBar} from 'expo-status-bar';
 import Back from "../../components/backToDevelopment";
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import Colors from "../../colors/colors";
 import { TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
@@ -13,13 +13,23 @@ import Promo from "../../components/CardViewPromo";
 import ButtonList from "../../components/ButtonList";
 import Copyright from "../../components/Copyright";
 import Avatar from "../../components/Avatar";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import uri from "../../setting/link";
+import { ActivityIndicator } from "react-native";
 
 class feed extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = { isLoading: true };
   }
-
+  async componentDidMount() {
+    const res = await AsyncStorage.getItem("user");
+    const user = await JSON.parse(res);
+    this.setState({
+      user,
+      isLoading: false,
+    });
+  }
   render() {
     return (
       <View
@@ -83,14 +93,23 @@ class feed extends Component {
               margintop: RFPercentage(1),
             }}
           >
-            <Avatar
-              size={"80%"}
-              resizeMode="contain"
-              source={require("../../assets/icons/ic_google.png")}
-              otherStyleProps={{
-                marginBottom: RFPercentage(2),
-              }}
-            />
+            {this.state.isLoading ? (
+              <ActivityIndicator size="large" animating color="white" />
+            ) : (
+              <View style={{ borderRadius: 100, width: "80%", height: "80%" }}>
+                <Avatar
+                  size={"100%"}
+                  resizeMode="contain"
+                  source={{
+                    uri: this.state.user.photo,
+                  }}
+                  otherStyleProps={{
+                    marginBottom: RFPercentage(2),
+                    borderRadius: 100,
+                  }}
+                />
+              </View>
+            )}
           </View>
           <Text
             style={{

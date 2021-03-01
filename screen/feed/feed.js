@@ -5,7 +5,7 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 // import {StatusBar} from 'expo-status-bar';
 import Back from "../../components/backToDevelopment";
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import Colors from "../../colors/colors";
 import { TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";

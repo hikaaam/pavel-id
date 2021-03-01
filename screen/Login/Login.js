@@ -9,7 +9,7 @@ import {
   Alert,
   KeyboardAvoidingView,
 } from "react-native";
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
 import {
   useFonts,
   Montserrat_300Light,
@@ -25,7 +25,7 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 //components
 import ButtonBiru from "../../components/ButtonBiru";
 import ButtonMasukGoogle from "../../components/ButtonMasukGoogle";
-import ButtonMasukFacebook from '../../components/ButtonMasukFacebook';
+import ButtonMasukFacebook from "../../components/ButtonMasukFacebook";
 import colors from "../../colors/colors";
 import Back from "../../components/backToDevelopment";
 
@@ -38,28 +38,54 @@ import url from "../../setting/link";
 import db from "../../database/DB";
 // todo : pasang fonts
 
-
-import * as Facebook from 'expo-facebook';
-import *  as GoogleSignIn from 'expo-google-sign-in';
+import * as Facebook from "expo-facebook";
+import * as GoogleSignIn from "expo-google-sign-in";
+import { getImageFromUrl } from "../../helper";
 const provider = new firebase.auth.GoogleAuthProvider();
-async function loginWithFacebook() {
-  await Facebook.initializeAsync('425356802026134');
+async function loginWithFacebook(nav) {
+  await Facebook.initializeAsync("425356802026134");
 
   const { type, token } = await Facebook.logInWithReadPermissionsAsync({
-    permissions: ['public_profile'],
+    permissions: ["public_profile"],
   });
 
-  if (type === 'success') {
+  if (type === "success") {
     // Build Firebase credential with the Facebook access token.
     const credential = firebase.auth.FacebookAuthProvider.credential(token);
-
+    const response = await fetch(
+      `https://graph.facebook.com/me?access_token=${token}`
+    );
+    // Alert.alert("Logged in!", `Hi ${(await response.json()).name}!`);
+    let fbCredential = await response.json();
+    const photo_url =
+      "https://graph.facebook.com/" +
+      fbCredential.id +
+      "/picture?access_token=" +
+      token +
+      "&type=large&redirect=false";
+    const photo_res = await fetch(photo_url);
+    const photo_json = await photo_res.json();
+    let url = photo_json.data.url;
+    // let img = getImageFromUrl(url);
+    console.log(photo_json);
+    let user = {
+      nama: fbCredential.name,
+      id: fbCredential.id,
+      photo: url,
+      via: "fb",
+      token: { fb: token },
+    };
+    db.createData("user", user);
+    console.log(fbCredential);
     // Sign in with credential from the Facebook user.
     firebase
       .auth()
       .signInWithCredential(credential)
-      .catch(error => {
+      .catch((error) => {
         // Handle Errors here.
+        console.log(error);
       });
+    nav.replace("BottomNav");
   }
 }
 class Login extends Component {
@@ -68,181 +94,183 @@ class Login extends Component {
     this.state = {
       email: "",
       password: "",
-      user: null
+      user: null,
     };
   }
   async componentDidMount() {
-    this.initAsync();
+    // this.initAsync();
   }
-    render() {
-      return (
-        <KeyboardAwareScrollView style={s.KeyboardAware}>
-          <View style={s.LoginViewContainer}>
-            {/* Logo aplikasi */}
-            <View style={s.LoginImageGoogleContainer}>
-              <Image
-                style={s.LoginImageGoogle}
-                source={require("../../assets/icons/ic_google.png")}
-              />
-            </View>
-
-            {/* form */}
-
-            <View style={s.LoginFormContainer}>
-              <Back />
-              {/* email */}
-              <View style={{ marginBottom: 15 }}>
-                <Text style={s.LoginFormTextTitle}>Email</Text>
-                <View>
-                  <TextInput
-                    placeholder="Email"
-                    textContentType="emailAddress"
-                    autoCapitalize="none"
-                    maxLength={255}
-                    returnKeyType={"next"}
-                    onChangeText={(txt) => {
-                      this.setState({ email: txt });
-                    }}
-                    onSubmitEditing={() => {
-                      this.Password.focus();
-                    }}
-                    blurOnSubmit={false}
-                    style={s.LoginFormTextInput}
-                  />
-                </View>
-              </View>
-              {/* password */}
-              <View style={{ marginBottom: 15 }}>
-                <Text style={s.LoginFormTextTitle}>Password</Text>
-                <View>
-                  <TextInput
-                    placeholder="Password"
-                    textContentType="password"
-                    secureTextEntry={true}
-                    maxLength={40}
-                    ref={(input) => {
-                      this.Password = input;
-                    }}
-                    onChangeText={(txt) => {
-                      this.setState({ password: txt });
-                    }}
-                    style={s.LoginFormTextInput}
-                  />
-                </View>
-              </View>
-              {/* forget password */}
-              <TouchableOpacity
-                onPress={() => {
-                  Alert.alert("lupa password");
-                }}
-              >
-                <Text style={s.LoginTextLupaPassword}>Lupa password?</Text>
-              </TouchableOpacity>
-              {/* btn masuk */}
-              {ButtonBiru.Btn("MASUK", 30, () => {
-                // this.login()
-                this.props.navigation.replace("BottomNav");
-              })}
-              <Text style={s.LoginTextAtau}>Atau</Text>
-              {/* btn masuk dengan google */}
-              <ButtonMasukGoogle
-                marginTop={15}
-                onPress={() => {
-                  this.onPress()
-                }}
-              />
-              <ButtonMasukFacebook
-                marginTop={15}
-                onPress={async () => {
-                 loginWithFacebook()
-                }}
-              />
-            </View>
-            {/* daftar */}
-
-            <View
-              style={{ flexDirection: "row", flex: 1, justifyContent: "center" }}
-            >
-              <Text style={s.LoginTextBelumPunyaAkun}>Belum punya akun?</Text>
-              <TouchableOpacity
-                onPress={() => {
-                  this.props.navigation.navigate("Register");
-                }}
-              >
-                <Text style={s.LoginTextDaftar}>Daftar</Text>
-              </TouchableOpacity>
-            </View>
+  render() {
+    return (
+      <KeyboardAwareScrollView style={s.KeyboardAware}>
+        <View style={s.LoginViewContainer}>
+          {/* Logo aplikasi */}
+          <View style={s.LoginImageGoogleContainer}>
+            <Image
+              style={s.LoginImageGoogle}
+              source={require("../../assets/icons/ic_google.png")}
+            />
           </View>
-        </KeyboardAwareScrollView>
-      );
-    }
-    login() {
-      let email = this.state.email;
-      let password = this.state.password;
-      console.log(url.link() + "user");
-      fetch(url.link() + "user", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-        }),
-      })
-        .then((res) => res.json())
-        .then((response) => {
-          if (response.status == "ok") {
-            db.createData("user", response.data[0]);
-            this.props.navigation.replace("BottomNav");
-            // return(Alert.alert("Berhasil",response.data[0].nama))
-          } else {
-            return Alert.alert("Gagal", response.msg);
-          }
-          // console.log(response);
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-    }
-    initAsync = async () => {
-      await GoogleSignIn.initAsync({
-        // You may ommit the clientId when the firebase `googleServicesFile` is configured
-        clientId: '543017744396-u6cilh79a019qbaomlokvf64032ha4rh.apps.googleusercontent.com',
-      });
-      this._syncUserWithStateAsync();
-    };
-  
-    _syncUserWithStateAsync = async () => {
-      const user = await GoogleSignIn.signInSilentlyAsync();
-      this.setState({ user });
-    };
-  
-    signOutAsync = async () => {
-      await GoogleSignIn.signOutAsync();
-      this.setState({ user: null });
-    };
-  
-    signInAsync = async () => {
-      try {
-        await GoogleSignIn.askForPlayServicesAsync();
-        const { type, user } = await GoogleSignIn.signInAsync();
-        if (type === 'success') {
-          this._syncUserWithStateAsync();
-        }
-      } catch ({ message }) {
-        alert('login: Error:' + message);
-      }
-    };
-  
-    onPress = () => {
-      if (this.state.user) {
-        this.signOutAsync();
-      } else {
-        this.signInAsync();
-      }
-    };
-  }
 
-  export default Login;
+          {/* form */}
+
+          <View style={s.LoginFormContainer}>
+            <Back />
+            {/* email */}
+            <View style={{ marginBottom: 15 }}>
+              <Text style={s.LoginFormTextTitle}>Email</Text>
+              <View>
+                <TextInput
+                  placeholder="Email"
+                  textContentType="emailAddress"
+                  autoCapitalize="none"
+                  maxLength={255}
+                  returnKeyType={"next"}
+                  onChangeText={(txt) => {
+                    this.setState({ email: txt });
+                  }}
+                  onSubmitEditing={() => {
+                    this.Password.focus();
+                  }}
+                  blurOnSubmit={false}
+                  style={s.LoginFormTextInput}
+                />
+              </View>
+            </View>
+            {/* password */}
+            <View style={{ marginBottom: 15 }}>
+              <Text style={s.LoginFormTextTitle}>Password</Text>
+              <View>
+                <TextInput
+                  placeholder="Password"
+                  textContentType="password"
+                  secureTextEntry={true}
+                  maxLength={40}
+                  ref={(input) => {
+                    this.Password = input;
+                  }}
+                  onChangeText={(txt) => {
+                    this.setState({ password: txt });
+                  }}
+                  style={s.LoginFormTextInput}
+                />
+              </View>
+            </View>
+            {/* forget password */}
+            <TouchableOpacity
+              onPress={() => {
+                Alert.alert("lupa password");
+              }}
+            >
+              <Text style={s.LoginTextLupaPassword}>Lupa password?</Text>
+            </TouchableOpacity>
+            {/* btn masuk */}
+            {ButtonBiru.Btn("MASUK", 30, () => {
+              // this.login()
+              // this.props.navigation.replace("BottomNav");
+              alert("login nganggo facebook wis bisa");
+            })}
+            <Text style={s.LoginTextAtau}>Atau</Text>
+            {/* btn masuk dengan google */}
+            <ButtonMasukGoogle
+              marginTop={15}
+              onPress={() => {
+                this.onPress();
+              }}
+            />
+            <ButtonMasukFacebook
+              marginTop={15}
+              onPress={async () => {
+                loginWithFacebook(this.props.navigation);
+              }}
+            />
+          </View>
+          {/* daftar */}
+
+          <View
+            style={{ flexDirection: "row", flex: 1, justifyContent: "center" }}
+          >
+            <Text style={s.LoginTextBelumPunyaAkun}>Belum punya akun?</Text>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.navigate("Register");
+              }}
+            >
+              <Text style={s.LoginTextDaftar}>Daftar</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </KeyboardAwareScrollView>
+    );
+  }
+  login() {
+    let email = this.state.email;
+    let password = this.state.password;
+    console.log(url.link() + "user");
+    fetch(url.link() + "user", {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then((res) => res.json())
+      .then((response) => {
+        if (response.status == "ok") {
+          db.createData("user", response.data[0]);
+          this.props.navigation.replace("BottomNav");
+          // return(Alert.alert("Berhasil",response.data[0].nama))
+        } else {
+          return Alert.alert("Gagal", response.msg);
+        }
+        // console.log(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
+  initAsync = async () => {
+    await GoogleSignIn.initAsync({
+      // You may ommit the clientId when the firebase `googleServicesFile` is configured
+      clientId:
+        "543017744396-u6cilh79a019qbaomlokvf64032ha4rh.apps.googleusercontent.com",
+    });
+    this._syncUserWithStateAsync();
+  };
+
+  _syncUserWithStateAsync = async () => {
+    const user = await GoogleSignIn.signInSilentlyAsync();
+    this.setState({ user });
+  };
+
+  signOutAsync = async () => {
+    await GoogleSignIn.signOutAsync();
+    this.setState({ user: null });
+  };
+
+  signInAsync = async () => {
+    try {
+      await GoogleSignIn.askForPlayServicesAsync();
+      const { type, user } = await GoogleSignIn.signInAsync();
+      if (type === "success") {
+        this._syncUserWithStateAsync();
+      }
+    } catch ({ message }) {
+      alert("login: Error:" + message);
+    }
+  };
+
+  onPress = () => {
+    if (this.state.user) {
+      this.signOutAsync();
+    } else {
+      this.signInAsync();
+    }
+  };
+}
+
+export default Login;

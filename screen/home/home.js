@@ -4,7 +4,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { StatusBar } from "expo-status-bar";
 //CustomComponents
-import ComponentHeader from "../../components/header";
+import ComponentHeader from "../../components/Header";
 // import CompenentHeader from "../../components/Header";
 import Back from "../../components/backToDevelopment";
 import LayananIcon from "../../components/LayananIcon";
@@ -27,12 +27,14 @@ class home extends Component {
     };
   }
   componentDidMount() {
-    // AsyncStorage.getItem('user').then((data)=> JSON.parse(data)).then((data)=>{
-    //     console.log(data)
-    //     this.setState({
-    //       nama:data.nama
-    //     })
-    // })
+    AsyncStorage.getItem("user")
+      .then((data) => JSON.parse(data))
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          nama: data.nama,
+        });
+      });
   }
 
   render() {

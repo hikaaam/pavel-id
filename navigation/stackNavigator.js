@@ -17,24 +17,40 @@ import {
   Tagihan,
   Register,
   RegisterSuccess,
+  Splash,
 } from "../screen";
 
 //Colors
 import Colors from "../colors/colors";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import bottomNav from "./bottomNavigator";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 const Stack = createStackNavigator();
 
-class stackNavigator {
+class stackNavigator extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLogin: false,
+    };
+  }
+
   Navigator = () => {
+    // AsyncStorage.removeItem("user");
     return (
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Splash">
         <Stack.Screen
           name="Development"
           options={{}}
           component={ScreenDevelopment}
         />
-
+        <Stack.Screen
+          name="Splash"
+          component={Splash}
+          options={{
+            headerShown: false,
+          }}
+        />
         <Stack.Screen
           name="BottomNav"
           component={bottomNav}
