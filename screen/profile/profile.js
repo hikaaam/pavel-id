@@ -5,7 +5,7 @@ import { RFPercentage } from "react-native-responsive-fontsize";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 // import {StatusBar} from 'expo-status-bar';
 import Back from "../../components/backToDevelopment";
-import Header from "../../components/Header";
+import Header from "../../components/header";
 import Colors from "../../colors/colors";
 import { TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native";
@@ -86,9 +86,9 @@ class feed extends Component {
             <Avatar
               size={"80%"}
               resizeMode="contain"
-              source={require('../../assets/icons/ic_google.png')}
+              source={require("../../assets/icons/ic_google.png")}
               otherStyleProps={{
-                marginBottom:RFPercentage(2)
+                marginBottom: RFPercentage(2),
               }}
             />
           </View>
@@ -141,27 +141,27 @@ class feed extends Component {
               <ButtonList
                 title="My Profile"
                 iconName="person-outline"
-                onPress={() => { }}
+                onPress={() => {}}
               />
               <ButtonList
                 title="Voucher Saya"
                 iconName="receipt-outline"
-                onPress={() => { }}
+                onPress={() => {}}
               />
               <ButtonList
                 title="Ulasan saya"
                 iconName="heart-outline"
-                onPress={() => { }}
+                onPress={() => {}}
               />
               <ButtonList
                 title="Undang teman pakai Pavel"
                 iconName="person-add-outline"
-                onPress={() => { }}
+                onPress={() => {}}
               />
               <ButtonList
                 title="Pengaturan"
                 iconName="options-outline"
-                onPress={() => { }}
+                onPress={() => {}}
               />
               <Text
                 style={{
@@ -176,17 +176,17 @@ class feed extends Component {
               <ButtonList
                 title="Pusat bantuan"
                 iconName="chatbox-ellipses-outline"
-                onPress={() => { }}
+                onPress={() => {}}
               />
               <ButtonList
                 title="Kebijakan layanan"
                 iconName="create-outline"
-                onPress={() => { }}
+                onPress={() => {}}
               />
               <ButtonList
                 title="Beri kami rating"
                 iconName="happy-outline"
-                onPress={() => { }}
+                onPress={() => {}}
               />
             </View>
             {/* <Copyright /> */}

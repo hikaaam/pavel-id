@@ -6,7 +6,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
 //Components
-import Header from "../../components/Header";
+import Header from "../../components/header";
 import Back from "../../components/backToDevelopment";
 import ButtonBiru from "../../components/ButtonBiru";
 

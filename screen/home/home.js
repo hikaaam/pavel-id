@@ -4,7 +4,7 @@ import Ionicons from "react-native-vector-icons/Ionicons";
 import { RFPercentage } from "react-native-responsive-fontsize";
 import { StatusBar } from "expo-status-bar";
 //CustomComponents
-import ComponentHeader from "../../components/Header";
+import ComponentHeader from "../../components/header";
 // import CompenentHeader from "../../components/Header";
 import Back from "../../components/backToDevelopment";
 import LayananIcon from "../../components/LayananIcon";
