@@ -18,6 +18,7 @@ import {
   Register,
   RegisterSuccess,
   Splash,
+  SearchFeed,
 } from "../screen";
 
 //Colors
@@ -83,6 +84,13 @@ class stackNavigator extends Component {
             },
           }}
           component={Pembayaran}
+        />
+         <Stack.Screen
+         options={{
+           headerShown:false
+         }}
+          name="SearchFeed"
+              component={SearchFeed}
         />
 
         <Stack.Screen

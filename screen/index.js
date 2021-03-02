@@ -11,6 +11,7 @@ import Register from "./Login/Register";
 import OrderList from "./order/orderList";
 import RegisterSuccess from "./Login/RegisterSuccess";
 import Splash from "./SplashScreen/Splash";
+import SearchFeed from "./feed/search";
 
 export {
   Home,
@@ -26,4 +27,5 @@ export {
   OrderList,
   RegisterSuccess,
   Splash,
+  SearchFeed,
 };
